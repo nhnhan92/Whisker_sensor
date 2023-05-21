@@ -1,0 +1,78 @@
+
+--- NEW SESSION: 24/03/2023 17:07:14 ---
+/whisker/GeomAlgo.drawColorEdges = 0.4 1 0.298039 1
+/whisker/GeomAlgo.drawColorTetrahedra = 1 1 0 1
+/whisker/GeomAlgo.drawColorTriangles = 0.298039 0.498039 0.8 1
+/whisker/topology.createTriangleArray = 1
+
+--- NEW SESSION: 24/03/2023 17:33:09 ---
+/whisker/topology.createTriangleArray = 0
+
+--- NEW SESSION: 28/03/2023 17:22:55 ---
+/whisker/DOFs.showColor = 1 0 0 1
+
+--- NEW SESSION: 28/03/2023 20:39:58 ---
+/whisker/DOFs.showColor = 1 0 0 1
+
+--- NEW SESSION: 28/03/2023 20:39:58 ---
+/whisker/DOFs.showColor = 1 0 0 1
+/whisker/DOFs.showColor = 1 0 0 1
+
+--- NEW SESSION: 28/03/2023 20:41:25 ---
+/whisker/DOFs.showColor = 1 0 0 1
+/whisker/FEM.computeGlobalMatrix = 1
+/whisker/FEM.tetrahedronInfo =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+/whisker/FEM.poissonRatio = 0.45
+/whisker/FEM.drawColor1 = 0 0 1 1
+/whisker/FEM.drawColor3 = 0 1 1 1
+/whisker/FEM.drawColor2 = 0 0.498039 1 1
+/whisker/FEM.drawColor4 = 0.498039 1 1 1
+
+--- NEW SESSION: 29/03/2023 09:58:24 ---
+/whisker/TriangleCollisionModel.color = 1 0.498039 0 1
+/whisker/LineCollisionModel.color = 1 0.498039 0 1
+
+--- NEW SESSION: 29/03/2023 10:35:23 ---
+/whisker/SkinCollision/TriangleCollisionModel.color = 1 0.498039 0 1
+
+--- NEW SESSION: 29/03/2023 11:56:53 ---
+/whisker/SkinCollision/TriangleCollisionModel.color = 1 0.498039 0 1
+
+--- NEW SESSION: 29/03/2023 11:56:53 ---
+/whisker/SkinCollision/TriangleCollisionModel.color = 1 0.498039 0 1
+/whisker/SkinCollision/TriangleCollisionModel.color = 1 0.498039 0 1
+
+--- NEW SESSION: 29/03/2023 11:57:49 ---
+/whisker/SkinCollision/topology2.nbPoints = 601
+
+--- NEW SESSION: 29/03/2023 11:57:49 ---
+/whisker/SkinCollision/topology2.nbPoints = 601
+/whisker/SkinCollision/topology2.nbPoints = 601
+/whisker/SkinCollision/GeomAlgo2.drawColorTriangles = 0.298039 0.498039 0.8 1
+/whisker/SkinCollision/GeomAlgo2.drawColorEdges = 0.4 1 0.298039 1
+/whisker/DOFs.showColor = 1 0 0 1
+
+--- NEW SESSION: 29/03/2023 15:17:14 ---
+/whisker/DOFs.showColor = 1 0 0 1
+
+--- NEW SESSION: 30/03/2023 15:36:37 ---
+/Plane/MechanicalObject.showColor = 1 1 1 1
+/Plane/TriangleCollisionModel.color = 0.498039 0.498039 0.498039 1
+/whisker/DOFs.showColor = 1 0 0 1
+
+--- NEW SESSION: 30/03/2023 15:38:18 ---
+/whisker/DOFs.showColor = 1 0 0 1
+/whisker/DOFs.showColor = 1 0 0 1
+
+--- NEW SESSION: 26/04/2023 14:57:31 ---
+//collision response.response = PenalityContactForceField
+
+--- NEW SESSION: 26/04/2023 15:04:46 ---
+//CollisionPipeline.draw = 1
+
+--- NEW SESSION: 30/04/2023 00:13:14 ---
+/whisker/fiber1/lines.drawEdges = 1
+
+--- NEW SESSION: 30/04/2023 15:37:10 ---
+/whisker/fiber1/DOF.showColor = 1 1 1 1
+/whisker/fiber1/DOF.showColor = 1 1 1 1

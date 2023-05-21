@@ -1,0 +1,27 @@
+clc; clear; close all
+% ??nh ngh?a các tham s? c?a ???ng xo?n ?c
+r = 22;      % bán kính c?a ???ng xo?n ?c ? m?t ph?ng ?áy
+p = 2;      % chi?u cao c?a ???ng xo?n ?c
+h = 139.7682521;    % chi?u cao c?a ???ng xo?n ?c (kho?ng cách t? ?i?m ??u ??n ?i?m cu?i)
+
+% Tính toán s? ?i?m trên ???ng xo?n ?c
+N = 10000;
+
+% Tính toán t?a ?? c?a các ?i?m trên ???ng xo?n ?c
+z = linspace(0, h, N);
+x = ((h-z)/h)*r.*cos((2*pi)*z/p+pi);
+y = ((h-z)/h)*r.*sin((2*pi)*z/p+pi);
+
+z2 = linspace(0, h, N);
+x2 = ((h-z2)/h)*r.*cos(-(2*pi)*z2/p-pi/2);
+y2 = ((h-z2)/h)*r.*sin(-(2*pi)*z2/p-pi/2);
+
+% V? ???ng xo?n ?c
+plot3(x, y, z);
+hold on
+plot3(x2, y2, z2);
+
+xlabel('X');
+ylabel('Y');
+zlabel('Z');
+zlim([0 24])

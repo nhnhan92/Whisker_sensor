@@ -1,0 +1,17 @@
+stl/
+exp_setup/
+strain_data/
+whisker_ver2/
+*.txt
+SOFA/Question/
+SOFA/Question3/
+SOFA/Question2/
+SOFA/Question4/
+*.idea/
+*__pycache__/
+*.ini
+*.VIEW
+data_processing/.git/
+*.md
+gmsh/demos/
+gmsh/tutorial/
