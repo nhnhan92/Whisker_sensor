@@ -1,0 +1,5 @@
+*.txt
+exp_setup/
+whisker_ver2/
+strain_data/
+stl/
