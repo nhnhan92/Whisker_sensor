@@ -156,17 +156,17 @@ class controller(Sofa.Core.Controller):
         self.whisker = self.node.getChild("whisker")
         self.mecawhisker = self.whisker.getObject("DOFs")
         self.trash_roi = self.whisker.getObject("trash")
-        # self.current_trash_roi = self.trash_roi.findData("box").value
+        self.current_trash_roi = self.trash_roi.findData("box").value
 
-        self.chamber = self.whisker.getChild('cavity')
-        self.pressure = self.chamber.getObject('SurfacePressureConstraint')
+        # self.chamber = self.whisker.getChild('cavity')
+        # self.pressure = self.chamber.getObject('SurfacePressureConstraint')
 
 
     def onKeypressedEvent(self,e):
 
-        increment = 0.2
-        # if e["key"] == Sofa.constants.Key.plus:
-        #     self.move_trash_roi(self.current_trash_roi,0,0,-increment)
+        increment = 0.5
+        if e["key"] == Sofa.constants.Key.plus:
+            self.move_trash_roi(self.current_trash_roi,0,0,-increment)
         
         if e["key"] == Sofa.constants.Key.leftarrow:
             self.moveRestPos(self.mecawhisker.findData("position").value, 0, 0, -increment)
@@ -180,17 +180,17 @@ class controller(Sofa.Core.Controller):
         if e["key"] == Sofa.constants.Key.downarrow:
             self.moveRestPos(self.mecawhisker.findData("position").value, -increment, 0, 0)
 
-        if e["key"] == Sofa.constants.Key.plus:
-            pressureValue = self.pressure.value + 0.00001
-            if pressureValue > 1.5:
-                pressureValue = 1.5
-            self.pressure.value = [pressureValue]
+        # if e["key"] == Sofa.constants.Key.plus:
+        #     pressureValue = self.pressure.value + 0.00001
+        #     if pressureValue > 1.5:
+        #         pressureValue = 1.5
+        #     self.pressure.value = [pressureValue]
 
-        if e["key"] == Sofa.constants.Key.minus:
-            pressureValue = self.self.pressure.value - 0.00001
-            if pressureValue < 0:
-                pressureValue = 0
-            self.pressure.value = [pressureValue]
+        # if e["key"] == Sofa.constants.Key.minus:
+        #     pressureValue = self.self.pressure.value - 0.00001
+        #     if pressureValue < 0:
+        #         pressureValue = 0
+        #     self.pressure.value = [pressureValue]
 
 
     # def onAnimateBeginEvent(self, event):
@@ -238,8 +238,8 @@ def createScene(rootNode):
     skin.addObject("FixedConstraint", indices="@FixedROI.indices")
     skin.addObject("LinearSolverConstraintCorrection")
 
-    # skin.addObject("BoxROI", template="Vec3d", box="-20 -20 110 20 20 170", drawBoxes="1", name="trash", drawSize="0.5", position = "@DOFs.position", tetrahedra = "@topology.tetrahedra")
-    # skin.addObject("TopologicalChangeProcessor", listening = 1, useDataInputs = 1, tetrahedraToRemove="@trash.tetrahedronIndices", timeToRemove=0.1, interval=0.05)
+    skin.addObject("BoxROI", template="Vec3d", box="-20 -20 120 20 20 150", drawBoxes="1", name="trash", drawSize="0.5", position = "@DOFs.position", tetrahedra = "@topology.tetrahedra")
+    skin.addObject("TopologicalChangeProcessor", listening = 1, useDataInputs = 1, tetrahedraToRemove="@trash.tetrahedronIndices", interval=0.1)
 
     ## Collision node
 
@@ -253,7 +253,7 @@ def createScene(rootNode):
     skinCollision.addObject("TriangleSetGeometryAlgorithms", name="GeomAlgo2", template="Vec3d")
     
     skinCollision.addObject("Tetra2TriangleTopologicalMapping", name="mapping", input="@../topology", output="@topology2")
-    # skinCollision.addObject("TriangleCollisionModel", selfCollision=0)
+    skinCollision.addObject("TriangleCollisionModel", selfCollision=0)
     skinCollision.addObject("LineCollisionModel", selfCollision=0)
     skinCollision.addObject("PointCollisionModel", selfCollision=0)
     # skinCollision.addObject("SphereCollisionModel", radius="1")
@@ -268,13 +268,15 @@ def createScene(rootNode):
     ##########################################
     # Constraint							 #
     ##########################################
-    cavity = skin.addChild('cavity')
-    cavity.addObject('MeshSTLLoader', name='loader', filename='mesh/whisker_chamber_stl.stl',rotation=[90, 0, 0])
-    cavity.addObject('MeshTopology', src='@loader', name='topo')
-    cavity.addObject('MechanicalObject', name='cavity')
-    cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint', template='Vec3', value=0.000001,
-                        triangles='@topo.triangles', valueType='pressure')
-    cavity.addObject('BarycentricMapping', name='mapping', mapForces=False, mapMasses=False)
+    chamber = ["right", "left"]
+    for cavity_idx in range(2):
+        cavity = skin.addChild('cavity'+chamber[cavity_idx])
+        cavity.addObject('MeshSTLLoader', name='loader', filename='mesh/whisker_chamber_'+chamber[cavity_idx]+'.stl',rotation=[0, 0, 0])
+        cavity.addObject('MeshTopology', src='@loader', name='topo')
+        cavity.addObject('MechanicalObject', name='cavity')
+        cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint', template='Vec3', value=0.000001,
+                            triangles='@topo.triangles', valueType='pressure')
+        cavity.addObject('BarycentricMapping', name='mapping', mapForces=False, mapMasses=False)
 
     ##########################################
     # Fibers                                 #
@@ -296,15 +298,15 @@ def createScene(rootNode):
     
 
     
-    planeNode = rootNode.addChild('Plane')
-    planeNode.addObject('MeshSTLLoader', name='loader', filename='mesh/plane.stl', translation=[130, 0, 100], flipNormals=1)
-    planeNode.addObject('MeshTopology', src='@loader')
-    planeNode.addObject('MechanicalObject', src='@loader')
-    # planeNode.addObject('TriangleCollisionModel')
-    # planeNode.addObject('LineCollisionModel')
-    # planeNode.addObject('PointCollisionModel')
-    planeNode.addObject("SphereCollisionModel", radius="6")
-    planeNode.addObject('OglModel', name='Visual', src='@loader', color=[1, 0, 0, 1])
+    # planeNode = rootNode.addChild('Plane')
+    # planeNode.addObject('MeshSTLLoader', name='loader', filename='mesh/plane.stl', translation=[130, 0, 100], flipNormals=1)
+    # planeNode.addObject('MeshTopology', src='@loader')
+    # planeNode.addObject('MechanicalObject', src='@loader')
+    # # planeNode.addObject('TriangleCollisionModel')
+    # # planeNode.addObject('LineCollisionModel')
+    # # planeNode.addObject('PointCollisionModel')
+    # planeNode.addObject("SphereCollisionModel", radius="6")
+    # planeNode.addObject('OglModel', name='Visual', src='@loader', color=[1, 0, 0, 1])
 
     rootNode.addObject(controller(name="MyController", node=rootNode))
 

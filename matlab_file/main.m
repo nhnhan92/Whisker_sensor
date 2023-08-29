@@ -7,8 +7,8 @@ clc
 init_pos_for = importfile('init_pos_for.xlsx');
 init_pos_rev = importfile('init_pos_rev.xlsx');
 init_pos_stra = importfile('init_pos_stra.xlsx');
-pressure = 2;   % pressure * 10 kPa
-mode = 'straigh';
+pressure = 4;   % pressure * 10 kPa
+mode = 'reverse';
 
 if mode == 'forward' % the whisker bends toward the side of strain gauge
     init_posZ = init_pos_for(pressure,3);    % vi tri bat dau sweep truc Z - offset
@@ -34,8 +34,8 @@ fast_speed = 10;        % toc do cua linear 300mm
 normal_speed = 4;       % toc do cua linear 15mm, 50mm
 
 % Changable parameters
-hour = 21;              % hour
-min = 29;               % minute10
+hour = 09;              % hour
+min = 38;               % minute10
 sc = 30;                % second, ***Note: luôn luôn ít h?n th?i gian trên DCS-100A 3 giây
 No_repeat = 10;          % number of sweeping cycle (1 forward and 1 backward sweeping)
 time_interval = 20;     % thoi gian doi sau moi lan sweep = trong DSC100A
