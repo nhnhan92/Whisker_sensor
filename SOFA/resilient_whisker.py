@@ -236,7 +236,7 @@ def createScene(rootNode):
     )
 
     skin.addObject("FixedConstraint", indices="@FixedROI.indices")
-    skin.addObject("LinearSolverConstraintCorrection")
+    skin.addObject("GenericConstraintCorrection")
 
     skin.addObject("BoxROI", template="Vec3d", box="-20 -20 120 20 20 150", drawBoxes="1", name="trash", drawSize="0.5", position = "@DOFs.position", tetrahedra = "@topology.tetrahedra")
     skin.addObject("TopologicalChangeProcessor", listening = 1, useDataInputs = 1, tetrahedraToRemove="@trash.tetrahedronIndices", interval=0.1)
