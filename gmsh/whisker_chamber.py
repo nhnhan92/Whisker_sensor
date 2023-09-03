@@ -17,6 +17,8 @@ gmsh.option.setNumber("General.Terminal", 0)
 
 gmsh.model.add("Taclink")
 path = os.path.dirname(os.path.abspath(__file__))
+# v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_chamber.STEP'))
+# v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_chamber_right.STEP'))
 v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_chamber_left.STEP'))
 
 gmsh.model.occ.synchronize()

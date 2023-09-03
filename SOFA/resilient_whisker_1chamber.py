@@ -11,66 +11,40 @@ from Sofa.constants import *
 from SofaRuntime import Timer
 # from stlib3.physics.rigid import Floor
 from param import *
-from fibers import fibers
-
+ 
 USE_GUI = 1
 contact_distance = 3
 contact_alarm = 6
+fiber1 = []
+fiber2 = []
+for i in range(1,3):
+    with open('fiber'+str(i)+'_info.csv', 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            if i == 1:
+                fiber1.append(row)
+            else:
+                fiber2.append(row)
 
-# Create fibers:
-fibers(cutting_plane = 1)
-fiber_right = []
-fiber_left = []
-chamber_name = ["right", "left"]
-for j in chamber_name:
-    if j == "right":
-        for i in range(1,3):
-            with open('fiber'+str(i)+j+'_info.csv', 'r') as file:
-                reader = csv.reader(file)
-                fiber_right.append([])
-                for row in reader:
-                    fiber_right[-1].append(row)
-    if j == "left":
-        for i in range(1,3):
-            with open('fiber'+str(i)+j+'_info.csv', 'r') as file:
-                reader = csv.reader(file)
-                fiber_left.append([])
-                for row in reader:
-                    fiber_left[-1].append(row)
-
-fiber_right_dof = []
-fiber_left_dof = []
-fiber_right_spring_info = []
-fiber_left_spring_info = []
-for k in range(len(fiber_right)):
-    fiber_right_dof.append([])
-    for i in range(1,len(fiber_right[k])):
-        for j in range(1,4):
-            fiber_right_dof[-1].append(float(fiber_right[k][i][j])) 
-
-for k in range(len(fiber_left)):
-    fiber_left_dof.append([])
-    for i in range(1,len(fiber_left[k])):
-        for j in range(1,4):
-            fiber_left_dof[-1].append(float(fiber_left[k][i][j])) 
-
-Ks = 1e3    # spring stiffness
-Kd = 5       # Spring damping cofficience
-for k in range(len(fiber_right)):
-    fiber_right_spring_info.append([])
-    fiber_left_spring_info.append([])
-    for i in range(0,len(fiber_right[k])-2):
-        fiber_right_spring_info[-1].append([i, i+1, Ks, Kd, m.sqrt((fiber_right_dof[k][3*i]-fiber_right_dof[k][3*(i+1)])**2+
-                                                        (fiber_right_dof[k][3*i+1]-fiber_right_dof[k][3*(i+1)+1])**2+
-                                                        (fiber_right_dof[k][3*i+2]-fiber_right_dof[k][3*(i+1)+2])**2)])
-    for i in range(0,len(fiber_left[k])-2):
-        fiber_left_spring_info[-1].append([i, i+1, Ks, Kd, m.sqrt((fiber_left_dof[k][3*i]-fiber_left_dof[k][3*(i+1)])**2+
-                                                        (fiber_left_dof[k][3*i+1]-fiber_left_dof[k][3*(i+1)+1])**2+
-                                                        (fiber_left_dof[k][3*i+2]-fiber_left_dof[k][3*(i+1)+2])**2)])
-
-fiber_dof = [fiber_right_dof, fiber_left_dof]
-spring_info = [fiber_right_spring_info, fiber_left_spring_info]
-
+fiber1_dof = []
+fiber2_dof = []
+fiber1_spring_info = []
+fiber2_spring_info = []
+for i in range(1,len(fiber1)):
+    for j in range(1,4):
+        fiber1_dof.append(float(fiber1[i][j])) 
+        fiber2_dof.append(float(fiber2[i][j])) 
+Ks = 1e5    # spring stiffness
+Kd = 5      # Spring damping cofficience
+for i in range(1,len(fiber1)-2):
+    fiber1_spring_info.append([i, i+1, Ks, Kd, m.sqrt((fiber1_dof[3*i]-fiber1_dof[3*(i+1)])**2+
+                                                     (fiber1_dof[3*i+1]-fiber1_dof[3*(i+1)+1])**2+
+                                                     (fiber1_dof[3*i+2]-fiber1_dof[3*(i+1)+2])**2)])
+    fiber2_spring_info.append([i, i+1, Ks, Kd, m.sqrt((fiber2_dof[3*i]-fiber2_dof[3*(i+1)])**2+
+                                                     (fiber2_dof[3*i+1]-fiber2_dof[3*(i+1)+1])**2+
+                                                     (fiber2_dof[3*i+2]-fiber2_dof[3*(i+1)+2])**2)])
+fiber_dof = [fiber1_dof, fiber2_dof]
+spring_info = [fiber1_spring_info, fiber2_spring_info]
 
 class controller(Sofa.Core.Controller):
 
@@ -184,50 +158,39 @@ class controller(Sofa.Core.Controller):
         self.trash_roi = self.whisker.getObject("trash")
         self.current_trash_roi = self.trash_roi.findData("box").value
 
-        self.chamber_right = self.whisker.getChild('cavity_right')
-        self.pressure_right = self.chamber_right.getObject('SurfacePressureConstraint')
-
-        self.chamber_left = self.whisker.getChild('cavity_left')
-        self.pressure_left = self.chamber_left.getObject('SurfacePressureConstraint')
+        self.chamber = self.whisker.getChild('cavity')
+        self.pressure = self.chamber.getObject('SurfacePressureConstraint')
 
 
     def onKeypressedEvent(self,e):
 
-        increment = 0.5
+        # increment = 0.5
         # if e["key"] == Sofa.constants.Key.plus:
         #     self.move_trash_roi(self.current_trash_roi,0,0,-increment)
         
-        if e["key"] == Sofa.constants.Key.leftarrow:
-            self.moveRestPos(self.mecawhisker.findData("position").value, 0, 0, -increment)
+        # if e["key"] == Sofa.constants.Key.leftarrow:
+        #     self.moveRestPos(self.mecawhisker.findData("position").value, 0, 0, -increment)
         
-        if e["key"] == Sofa.constants.Key.rightarrow:
-            self.moveRestPos(self.mecawhisker.findData("position").value, 0, 0, increment)
+        # if e["key"] == Sofa.constants.Key.rightarrow:
+        #     self.moveRestPos(self.mecawhisker.findData("position").value, 0, 0, increment)
 
-        if e["key"] == Sofa.constants.Key.uparrow:
-            self.moveRestPos(self.mecawhisker.findData("position").value, increment, 0, 0)
+        # if e["key"] == Sofa.constants.Key.uparrow:
+        #     self.moveRestPos(self.mecawhisker.findData("position").value, increment, 0, 0)
         
-        if e["key"] == Sofa.constants.Key.downarrow:
-            self.moveRestPos(self.mecawhisker.findData("position").value, -increment, 0, 0)
+        # if e["key"] == Sofa.constants.Key.downarrow:
+        #     self.moveRestPos(self.mecawhisker.findData("position").value, -increment, 0, 0)
 
-        if (e["key"] == Sofa.constants.Key.plus):
-            pressureValue_left = self.pressure_left.value + 0.0001
-            pressureValue_right = self.pressure_right.value - 0
-            if pressureValue_left > 1:
-                pressureValue_left = 1
-            if pressureValue_right < 0:
-                pressureValue_right = 0.000001
-            self.pressure_right.value = [pressureValue_right]
-            self.pressure_left.value = [pressureValue_left]
+        if e["key"] == Sofa.constants.Key.plus:
+            pressureValue = self.pressure.value + 0.0001
+            if pressureValue > 1.5:
+                pressureValue = 1.5
+            self.pressure.value = [pressureValue]
 
-        if (e["key"] == Sofa.constants.Key.minus):
-            pressureValue_left = self.pressure_left.value - 0.000005
-            pressureValue_right = self.pressure_right.value + 0
-            if pressureValue_right > 1:
-                pressureValue_right = 1
-            if pressureValue_left < 0:
-                pressureValue_left = 0.000001
-            self.pressure_right.value = [pressureValue_right]
-            self.pressure_left.value = [pressureValue_left]
+        if e["key"] == Sofa.constants.Key.minus:
+            pressureValue = self.self.pressure.value - 0.0001
+            if pressureValue < 0:
+                pressureValue = 0
+            self.pressure.value = [pressureValue]
 
 
     # def onAnimateBeginEvent(self, event):
@@ -237,7 +200,7 @@ class controller(Sofa.Core.Controller):
 
 def createScene(rootNode):
     rootNode.gravity.value = [0, -9810, 0]
-    rootNode.dt = 0.05
+    rootNode.dt = 0.01
 
     rootNode.addObject("RequiredPlugin",pluginName="Softrobots SofaPython3 STLIB SofaGeneralObjectInteraction SofaMeshCollision SofaDeformable SofaEngine SofaLoader SofaOpenglVisual SofaGeneralSimpleFem")
     rootNode.addObject("VisualStyle",displayFlags="showVisualModels hideBehaviorModels hideCollisionModels hideBoundingCollisionModels hideForceFields showInteractionForceFields hideWireframe")
@@ -259,13 +222,13 @@ def createScene(rootNode):
     skin.addObject("EulerImplicitSolver", name="cg_odesolver")
     # skin.addObject('CGLinearSolver', name='linearSolver', tolerance="1e-09", threshold="1e-12")
     skin.addObject("SparseLDLSolver",  name="linearSolver", template="CompressedRowSparseMatrixMat3x3d")
-    skin.addObject("MeshVTKLoader", filename="mesh/whisker_init_vtk.vtk", name="loader", createSubelements=1, translation=[0, 0, 0], rotation=[0, 0, 0], flipNormals=0)
+    skin.addObject("MeshVTKLoader", filename="mesh/whisker_body_1chamber.vtk", name="loader", createSubelements=1, translation=[0, 0, 0], rotation=[0, 0, 0], flipNormals=0)
     skin.addObject("MechanicalObject", template="Vec3d", src="@loader", name="DOFs", showIndices=0, showIndicesScale=0.001, showColor="red")
     skin.addObject("TetrahedronSetTopologyContainer", src="@loader", name="topology")
     skin.addObject("TetrahedronSetTopologyModifier", name="Modifier")
     skin.addObject("TetrahedronSetGeometryAlgorithms", name="GeomAlgo", template="Vec3d")
     skin.addObject("UniformMass", totalMass="0.000012", name="mass")
-    skin.addObject("TetrahedralCorotationalFEMForceField", template="Vec3", name="FEM", method="large", poissonRatio=0.45, youngModulus=1, updateStiffnessMatrix=0, rayleighStiffness=0)
+    skin.addObject("TetrahedralCorotationalFEMForceField", template="Vec3", name="FEM", method="large", poissonRatio=0.45, youngModulus=0.9562, updateStiffnessMatrix=0, rayleighStiffness=0)
     skin.addObject("BoxROI", template="Vec3d", box="-20 -20 -1 20 20 1", drawBoxes="1", name="FixedROI", computeEdges="1", computeTriangles="0",
         computeTetrahedra="0",
         computeHexahedra="0",
@@ -305,49 +268,34 @@ def createScene(rootNode):
     ##########################################
     # Constraint							 #
     ##########################################
-    chamber = ["right", "left"]
-    for cavity_idx in range(2):
-        cavity = skin.addChild('cavity_'+chamber[cavity_idx])
-        cavity.addObject('MeshSTLLoader', name='loader', filename='mesh/whisker_chamber_'+chamber[cavity_idx]+'.stl',rotation=[0, 0, 0])
-        cavity.addObject('MeshTopology', src='@loader', name='topo')
-        cavity.addObject('MechanicalObject', name='cavity')
-        cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint', template='Vec3', value=0,
-                            triangles='@topo.triangles', valueType='pressure')
-        cavity.addObject('BarycentricMapping', name='mapping', mapForces=False, mapMasses=False)
 
-    #########################################
+    cavity = skin.addChild('cavity')
+    cavity.addObject('MeshSTLLoader', name='loader', filename='mesh/whisker_chamber_stl.stl',rotation=[0, 0, 0])
+    cavity.addObject('MeshTopology', src='@loader', name='topo')
+    cavity.addObject('MechanicalObject', name='cavity')
+    cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint',flipNormal = 1, template='Vec3', value=0.000001,
+                        triangles='@topo.triangles', valueType='pressure')
+    cavity.addObject('BarycentricMapping', name='mapping', mapForces=False, mapMasses=False)
+
+    ##########################################
     # Fibers                                 #
-    ######################################### 
-    for chamber in range(len(fiber_dof)):
-        for fiber_idx in range (2):
-            fiber = skin.addChild('fiber'+str(fiber_idx)+"_"+chamber_name[chamber])
-            fiber.addObject("MechanicalObject", template="Vec3", name="DOF",
-                            position=fiber_dof[chamber][fiber_idx],
-                            showObject=True, showObjectScale=3,translation=[0, 0, 0.1])
-            fiber.addObject('MeshTopology', name='lines', lines=[[i, i + 1] for i in range(len(fiber_dof[chamber][fiber_idx])-1)]) 
-            fiber.addObject('UniformMass', totalMass=0.000008)
-            fiber.addObject("FixedConstraint", name="FixedConstraint", indices=[0])
+    ##########################################
+    for fiber_idx in range (2):
+        fiber = skin.addChild('fiber'+str(fiber_idx))
+        fiber.addObject("MechanicalObject", template="Vec3", name="DOF",
+                        position=fiber_dof[fiber_idx],
+                        showObject=True, showObjectScale=1,translation=[0, 0, 0.1])
+        fiber.addObject('MeshTopology', name='lines', lines=[[i, i + 1] for i in range(len(fiber1)-1)]) 
+        fiber.addObject('UniformMass', totalMass=0.000000000000000000000008)
+        fiber.addObject("FixedConstraint", name="FixedConstraint", indices=[0])
 
-            fiber.addObject("StiffSpringForceField", template="Vec3d", name="springs", showArrowSize=1, drawMode=1,spring=spring_info[chamber][fiber_idx])
-            fiber.addObject('BarycentricMapping', name='mapping')
-            skin.addObject('MechanicalMatrixMapper', template="Vec3,Vec3", name="mapper"+str(fiber_idx)+"_"+chamber_name[chamber],
-                            nodeToParse=fiber.getLinkPath(),  # where to find the forces to map
-                            object1=skin.DOFs.getLinkPath(), parallelTasks = 0)  # where to map the forces)  # in case of multi-mapping, here you can give the second parent
+        fiber.addObject("StiffSpringForceField", template="Vec3d", name="springs", showArrowSize=0.1, drawMode=1,spring=spring_info[fiber_idx])
+        fiber.addObject('BarycentricMapping', name='mapping')
+        skin.addObject('MechanicalMatrixMapper', template="Vec3,Vec3", name="mapper"+str(fiber_idx),
+                         nodeToParse=fiber.linkpath,  # where to find the forces to map
+                         object1=skin.DOFs.linkpath, parallelTasks = 0)  # where to map the forces)  # in case of multi-mapping, here you can give the second parent
     
-    # for fiber_idx in range (2):
-    #     fiber = skin.addChild('fiber'+str(fiber_idx))
-    #     fiber.addObject("MechanicalObject", template="Vec3", name="DOF",
-    #                     position=fiber_dof[fiber_idx],
-    #                     showObject=True, showObjectScale=1,translation=[0, 0, 0.1])
-    #     fiber.addObject('MeshTopology', name='lines', lines=[[i, i + 1] for i in range(len(fiber1)-1)]) 
-    #     fiber.addObject('UniformMass', totalMass=0.000000000000000000000008)
-    #     fiber.addObject("FixedConstraint", name="FixedConstraint", indices=[0])
 
-    #     fiber.addObject("StiffSpringForceField", template="Vec3d", name="springs", showArrowSize=0.1, drawMode=1,spring=spring_info[fiber_idx])
-    #     fiber.addObject('BarycentricMapping', name='mapping')
-    #     skin.addObject('MechanicalMatrixMapper', template="Vec3,Vec3", name="mapper"+str(fiber_idx),
-    #                     nodeToParse=fiber.linkpath,  # where to find the forces to map
-    #                     object1=skin.DOFs.linkpath, parallelTasks = 0)  # where to map the forces)  # in case of multi-mapping, here you can give the second parent
     
     # planeNode = rootNode.addChild('Plane')
     # planeNode.addObject('MeshSTLLoader', name='loader', filename='mesh/plane.stl', translation=[130, 0, 100], flipNormals=1)
