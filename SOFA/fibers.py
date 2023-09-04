@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import os
 import csv
 import math as m
@@ -159,19 +159,18 @@ def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = N
 				writer.writerow(header)
 				data_limit = int((h/2)*coarse_points/H)+len(point_in_plane[i])
 				for j in range(data_limit):
-					if i == 0 and final_helix[i][j][2]<h:
-						writer.writerow([j,final_helix[i][j][0],final_helix[i][j][1],final_helix[i][j][2],cutting_plane])
-					elif i == 1 and final_helix[i][j][2]<h:
+					if final_helix[i][j][2]<h:
 						writer.writerow([j,final_helix[i][j][0],final_helix[i][j][1],final_helix[i][j][2],cutting_plane])
 	
 	init_helix_path(number_points= coarse_points, draw=0, save=0)
 	init_curve = trimming_helix(number_points=coarse_points, draw=0)
 	trimmed_points_curve = trimming_helix(number_points=fine_points, draw=0)
-	# plt.show()
 	point_in_plane = sort_trimmed_curves(trimmed_points_curve=trimmed_points_curve)
 	final_helix = []
 	for i in range(len(init_curve)):
 		revised_helix = init_curve[i]
+		final_helix.append([])
+		data_limit = int((h/2)*coarse_points/H)+len(point_in_plane[i])
 		for j in range(0,len(point_in_plane[i])):
 			# Find the index to insert the new point
 			insert_index_z = np.searchsorted(revised_helix[:, 2], point_in_plane[i][j][2],side='right')
@@ -192,9 +191,11 @@ def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = N
 				if np.array_equal(revised_helix[j], intermediate_points[0]):
 					revised_helix = np.insert(revised_helix, j+1, intermediate_points[1:n-1], axis=0)
 					break
-		final_helix.append(revised_helix)
+		for j in range(len(revised_helix)):
+			if revised_helix[j][2]<h:
+				final_helix[-1].append(revised_helix[j])
 	# save csv
-	save_csv(final_helix=final_helix)
+	# save_csv(final_helix=final_helix)
 	if draw:
 	### Draw Figures
 	# Vẽ đường xoắn ốc 
@@ -214,4 +215,3 @@ def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = N
 # # Function used only if this script is called from a python environment
 # if __name__ == '__main__':	
 # 	final_helix = fibers(cutting_plane = 1, draw=1)
-

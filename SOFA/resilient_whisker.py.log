@@ -227,3 +227,6 @@
 /whisker/cavity_left/SurfacePressureConstraint.cavityVolume = 3531.93
 /whisker/cavity_left/SurfacePressureConstraint.volumeGrowth = 1109.77
 /whisker/cavity_left/SurfacePressureConstraint.pressure = 0.0102
+
+--- NEW SESSION: 04/09/2023 15:01:51 ---
+/whisker/fiber0_right/DOF.showColor = 1 1 1 1
