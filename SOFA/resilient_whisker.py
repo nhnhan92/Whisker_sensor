@@ -164,8 +164,8 @@ class controller(Sofa.Core.Controller):
                 pressureValue_left = 1
             if pressureValue_right < 0:
                 pressureValue_right = 0.000001
-            self.pressure_right.value = [pressureValue_right]
-            self.pressure_left.value = [pressureValue_left]
+            self.pressure_right.value = pressureValue_right
+            self.pressure_left.value = pressureValue_left
 
         if (e["key"] == Sofa.constants.Key.minus):
             pressureValue_left = self.pressure_left.value - 0.000005
@@ -174,8 +174,8 @@ class controller(Sofa.Core.Controller):
                 pressureValue_right = 1
             if pressureValue_left < 0:
                 pressureValue_left = 0.000001
-            self.pressure_right.value = [pressureValue_right]
-            self.pressure_left.value = [pressureValue_left]
+            self.pressure_right.value = pressureValue_right
+            self.pressure_left.value = pressureValue_left
 
 
     # def onAnimateBeginEvent(self, event):
@@ -187,7 +187,7 @@ def createScene(rootNode):
     rootNode.gravity.value = [0, -9810, 0]
     rootNode.dt = 0.05
 
-    rootNode.addObject("RequiredPlugin",pluginName="Softrobots SofaPython3 STLIB SofaGeneralObjectInteraction SofaMeshCollision SofaDeformable SofaEngine SofaLoader SofaOpenglVisual SofaGeneralSimpleFem")
+    rootNode.addObject("RequiredPlugin",pluginName="Sofa.Component.Collision.Detection.Algorithm Softrobots SofaPython3")
     rootNode.addObject("VisualStyle",displayFlags="showVisualModels hideBehaviorModels hideCollisionModels hideBoundingCollisionModels hideForceFields showInteractionForceFields hideWireframe")
     rootNode.addObject("DefaultVisualManagerLoop")
     rootNode.addObject("DefaultPipeline", name="CollisionPipeline", draw=0)
@@ -252,7 +252,7 @@ def createScene(rootNode):
     # #########################################
     # # Fibers                                 #
     # ######################################### 
-    fiber = skin.addChild(fiber_node(name="fiber", parent=skin))
+    fiber = skin.addChild(fiber_node(name="fiber", parent=skin,Ks = 1e5, Kd = 5))
     
     # #########################################
     # # Chambers                                 #

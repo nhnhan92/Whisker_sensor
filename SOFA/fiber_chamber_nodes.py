@@ -8,8 +8,8 @@ def fiber_parameters(Ks = 1e3, Kd = 5):
 
     chamber_name = ["right", "left"]
     # Create fibers:
-    fiber_right = fibers(cutting_plane = 1)
-    fiber_left = fibers(cutting_plane = -1)
+    fiber_right = fibers(cutting_plane = 1.2)
+    fiber_left = fibers(cutting_plane = -1.2)
 
     fiber_right_dof = []
     fiber_left_dof = []
@@ -43,11 +43,11 @@ def fiber_parameters(Ks = 1e3, Kd = 5):
 
     return fiber_dof, spring_info
 
-def fiber_node(name, parent):
+def fiber_node(name, parent, Ks, Kd):
 
     self = parent.addChild(name)
     chamber_name = ["right", "left"]
-    fiber_dof, spring_info = fiber_parameters()
+    fiber_dof, spring_info = fiber_parameters(Ks=Ks, Kd=Kd)
     #########################################
     # Fibers                                 #
     ######################################### 

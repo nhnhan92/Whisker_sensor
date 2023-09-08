@@ -230,3 +230,14 @@
 
 --- NEW SESSION: 04/09/2023 15:01:51 ---
 /whisker/fiber0_right/DOF.showColor = 1 1 1 1
+
+--- NEW SESSION: 07/09/2023 18:02:33 ---
+/fiber0_right/DOF.showColor = 1 1 1 1
+
+--- NEW SESSION: 08/09/2023 11:04:53 ---
+/whisker/chamber/cavity_left.time = 53.6
+
+--- NEW SESSION: 08/09/2023 11:12:28 ---
+/whisker/chamber/cavity_left/SurfacePressureConstraint.cavityVolume = 2915.11
+/whisker/chamber/cavity_left/SurfacePressureConstraint.pressure = 0.0044
+/whisker/chamber/cavity_left/SurfacePressureConstraint.volumeGrowth = 492.953

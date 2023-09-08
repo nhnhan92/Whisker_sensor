@@ -1,11 +1,13 @@
 import numpy as np
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import os
 import csv
 import math as m
-
+# import pylustrator
+# activate pylustrator
+# pylustrator.start()
 def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = None,
-		coarse_points = 2000, fine_points = 20000, h = 24, draw = False):
+		coarse_points = 2200, fine_points = 20000, h = 24, draw = False):
 	final_helix = []
 	for i in range(number_chambers):
 		final_helix.append([])
@@ -91,7 +93,7 @@ def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = N
 			fig = plt.figure()
 			ax = fig.add_subplot(111,projection='3d')
 			ax.plot(trimmed_points_curve[0][:,0], trimmed_points_curve[0][:,1], trimmed_points_curve[0][:,2], label='fiber 1')
-			ax.plot(trimmed_points_curve[1][:,0], trimmed_points_curve[1][:,1], trimmed_points_curve[1][:,2], label='fiber 2')
+			# ax.plot(trimmed_points_curve[1][:,0], trimmed_points_curve[1][:,1], trimmed_points_curve[1][:,2], label='fiber 2')
 			ax.set_xlabel('X')
 			ax.set_ylabel('Y')
 			ax.set_zlabel('Z')
@@ -179,9 +181,8 @@ def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = N
 				insert_index_z -= 1
 			# Insert the new point at the calculated index
 			revised_helix = np.insert(revised_helix, insert_index_z, point_in_plane[i][j], axis=0)	
-			
 		for k in range(0,int(len(point_in_plane[i])/2)-1):
-			n = 5  # Change this to the desired number of points
+			n = 10  # Change this to the desired number of points
 			step_size = 1.0 / (n - 1)
 			intermediate_points = []
 			for g in range(n):
@@ -194,6 +195,8 @@ def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = N
 		for j in range(len(revised_helix)):
 			if revised_helix[j][2]<h:
 				final_helix[-1].append(revised_helix[j])
+
+	final_helix = np.array(final_helix)
 	# save csv
 	# save_csv(final_helix=final_helix)
 	if draw:
@@ -201,9 +204,9 @@ def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = N
 	# Vẽ đường xoắn ốc 
 		fig = plt.figure()
 		ax = fig.add_subplot(111,projection='3d')
-		no = 186
-		ax.plot(final_helix[0][0:no,0], final_helix[0][0:no,1], final_helix[0][0:no,2], label='fiber 1')
-		ax.plot(final_helix[1][0:no,0], final_helix[1][0:no,1], final_helix[1][0:no,2], label='fiber 2')
+		no = 400
+		ax.plot(final_helix[0][0:no,0], final_helix[0][0:no,1], final_helix[0][0:no,2], marker='o', label='fiber 1')
+		ax.plot(final_helix[1][0:no,0], final_helix[1][0:no,1], final_helix[1][0:no,2], marker='*', label='fiber 2')
 		ax.set_xlabel('X')
 		ax.set_ylabel('Y')
 		ax.set_zlabel('Z')
@@ -212,6 +215,6 @@ def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = N
 		plt.show()
 	return final_helix
 
-# # Function used only if this script is called from a python environment
-# if __name__ == '__main__':	
-# 	final_helix = fibers(cutting_plane = 1, draw=1)
+# Function used only if this script is called from a python environment
+if __name__ == '__main__':	
+	final_helix = fibers(cutting_plane = -1.2, draw=1)
