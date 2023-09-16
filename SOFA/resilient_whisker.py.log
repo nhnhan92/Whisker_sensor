@@ -241,3 +241,29 @@
 /whisker/chamber/cavity_left/SurfacePressureConstraint.cavityVolume = 2915.11
 /whisker/chamber/cavity_left/SurfacePressureConstraint.pressure = 0.0044
 /whisker/chamber/cavity_left/SurfacePressureConstraint.volumeGrowth = 492.953
+
+--- NEW SESSION: 16/09/2023 21:40:05 ---
+/whisker/chamber/cavity_left/SurfacePressureConstraint.cavityVolume = 2398.42
+/whisker/chamber/cavity_left/SurfacePressureConstraint.pressure = 0.0002
+/whisker/chamber/cavity_left/SurfacePressureConstraint.volumeGrowth = -23.7445
+/whisker/chamber/cavity_left/SurfacePressureConstraint.drawPressure = 0
+/whisker/chamber/cavity_left/SurfacePressureConstraint.drawScale = 0.74
+/whisker/chamber/cavity_right/SurfacePressureConstraint.cavityVolume = 2649.5
+/whisker/chamber/cavity_right/SurfacePressureConstraint.pressure = 0.0007
+/whisker/chamber/cavity_right/SurfacePressureConstraint.volumeGrowth = 227.338
+/whisker/chamber/cavity_left/SurfacePressureConstraint.cavityVolume = 2398.42
+/whisker/chamber/cavity_left/SurfacePressureConstraint.pressure = 0.0002
+/whisker/chamber/cavity_left/SurfacePressureConstraint.volumeGrowth = -23.7445
+/whisker/chamber/cavity_left/SurfacePressureConstraint.drawPressure = 0
+/whisker/chamber/cavity_left/SurfacePressureConstraint.drawScale = 0.74
+/whisker/chamber/cavity_right/SurfacePressureConstraint.cavityVolume = 2649.5
+/whisker/chamber/cavity_right/SurfacePressureConstraint.pressure = 0.0007
+/whisker/chamber/cavity_right/SurfacePressureConstraint.volumeGrowth = 227.338
+/whisker/chamber/cavity_left/SurfacePressureConstraint.cavityVolume = 2398.42
+/whisker/chamber/cavity_left/SurfacePressureConstraint.pressure = 0.0002
+/whisker/chamber/cavity_left/SurfacePressureConstraint.volumeGrowth = -23.7445
+/whisker/chamber/cavity_left/SurfacePressureConstraint.drawPressure = 0
+/whisker/chamber/cavity_left/SurfacePressureConstraint.drawScale = 0.74
+/whisker/chamber/cavity_right/SurfacePressureConstraint.cavityVolume = 2649.5
+/whisker/chamber/cavity_right/SurfacePressureConstraint.pressure = 0.0007
+/whisker/chamber/cavity_right/SurfacePressureConstraint.volumeGrowth = 227.338
