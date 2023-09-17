@@ -131,11 +131,11 @@ class controller(Sofa.Core.Controller):
         # self.trash_roi = self.whisker.getObject("trash")
         # self.current_trash_roi = self.trash_roi.findData("box").value
         
-        self.chamber_node = self.whisker.getChild("chamber")
-        self.chamber_right = self.chamber_node.getChild("cavity_right")
+        # self.chamber_node = self.whisker.getChild("chamber")
+        self.chamber_right = self.whisker.getChild("cavity_right")
         self.pressure_right = self.chamber_right.getObject('SurfacePressureConstraint')
 
-        self.chamber_left = self.chamber_node.getChild('cavity_left')
+        self.chamber_left = self.whisker.getChild('cavity_left')
         self.pressure_left = self.chamber_left.getObject('SurfacePressureConstraint')
 
 
@@ -157,12 +157,18 @@ class controller(Sofa.Core.Controller):
         if e["key"] == Sofa.constants.Key.downarrow:
             self.moveRestPos(self.mecawhisker.findData("position").value, -increment, 0, 0)
 
+<<<<<<< HEAD
         if (e["key"] == Sofa.constants.Key.KP_1):
             pressureValue_left = self.pressure_left.value + 0.00005
+=======
+        if (e["key"] == Sofa.constants.Key.plus):
+            pressureValue_left = self.pressure_left.value + 0.0001
+>>>>>>> 623cdcb94aecf3ca9750ef19cee07e40836cf3d5
             if pressureValue_left > 1:
                 pressureValue_left = 1
             self.pressure_left.value = pressureValue_left
 
+<<<<<<< HEAD
         if (e["key"] == Sofa.constants.Key.KP_2):
             pressureValue_left = self.pressure_left.value - 0.00005
             if pressureValue_left < 0:
@@ -179,6 +185,12 @@ class controller(Sofa.Core.Controller):
             pressureValue_right = self.pressure_right.value - 0.00005
             if pressureValue_right < 0:
                 pressureValue_right = self.pressure_right.value
+=======
+        if (e["key"] == Sofa.constants.Key.minus):
+            pressureValue_right = self.pressure_right.value + 0.0001
+            if pressureValue_right > 1:
+                pressureValue_right = 1
+>>>>>>> 623cdcb94aecf3ca9750ef19cee07e40836cf3d5
             self.pressure_right.value = pressureValue_right
 
 
@@ -191,7 +203,7 @@ def createScene(rootNode):
     rootNode.gravity.value = [0, -9810, 0]
     rootNode.dt = 0.05
 
-    rootNode.addObject("RequiredPlugin",pluginName="Softrobots SofaPython3 STLIB SofaGeneralObjectInteraction SofaMeshCollision SofaDeformable SofaEngine SofaLoader SofaOpenglVisual SofaGeneralSimpleFem")
+    rootNode.addObject("RequiredPlugin",pluginName="Sofa.Component.Collision.Detection.Algorithm Softrobots SofaPython3")
     rootNode.addObject("VisualStyle",displayFlags="showVisualModels hideBehaviorModels hideCollisionModels hideBoundingCollisionModels hideForceFields showInteractionForceFields hideWireframe")
     rootNode.addObject("DefaultVisualManagerLoop")
     rootNode.addObject("DefaultPipeline", name="CollisionPipeline", draw=0)
@@ -256,13 +268,22 @@ def createScene(rootNode):
     # #########################################
     # # Fibers                                 #
     # ######################################### 
-    fiber = skin.addChild(fiber_node(name="fiber", parent=skin))
+    # fiber = skin.addChild(fiber_node(name="fiber", parent=skin,Ks = 1e5, Kd = 5))
     
     # #########################################
     # # Chambers                                 #
     # ######################################### 
-    skin.addChild(chamber_node(name= "chamber", parent=skin))
-    
+    # skin.addChild(chamber_node(name= "chamber", parent=skin))
+    # chamber = ["right", "left"]
+    # for cavity_idx in range(2):
+    #     cavity = skin.addChild('cavity_'+chamber[cavity_idx])
+    #     # cavity = parent.addChild(name+chamber[cavity_idx])
+    #     cavity.addObject('MeshSTLLoader', name='loader', filename='mesh/whisker_chamber_'+chamber[cavity_idx]+'.stl',rotation=[0, 0, 0])
+    #     cavity.addObject('MeshTopology', src='@loader', name='topo')
+    #     cavity.addObject('MechanicalObject', name='cavity')
+    #     cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint', template='Vec3', value=0,
+    #                         triangles='@topo.triangles', valueType='pressure')
+    #     cavity.addObject('BarycentricMapping', name='mapping')
     # planeNode = rootNode.addChild('Plane')
     # planeNode.addObject('MeshSTLLoader', name='loader', filename='mesh/plane.stl', translation=[130, 0, 100], flipNormals=1)
     # planeNode.addObject('MeshTopology', src='@loader')
