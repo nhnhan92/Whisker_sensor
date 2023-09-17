@@ -128,8 +128,8 @@ class controller(Sofa.Core.Controller):
 
         self.whisker = self.node.getChild("whisker")
         self.mecawhisker = self.whisker.getObject("DOFs")
-        self.trash_roi = self.whisker.getObject("trash")
-        self.current_trash_roi = self.trash_roi.findData("box").value
+        # self.trash_roi = self.whisker.getObject("trash")
+        # self.current_trash_roi = self.trash_roi.findData("box").value
         
         self.chamber_node = self.whisker.getChild("chamber")
         self.chamber_right = self.chamber_node.getChild("cavity_right")
@@ -158,25 +158,25 @@ class controller(Sofa.Core.Controller):
             self.moveRestPos(self.mecawhisker.findData("position").value, -increment, 0, 0)
 
         if (e["key"] == Sofa.constants.Key.KP_1):
-            pressureValue_left = self.pressure_left.value + 0.00001
+            pressureValue_left = self.pressure_left.value + 0.00005
             if pressureValue_left > 1:
                 pressureValue_left = 1
             self.pressure_left.value = pressureValue_left
 
         if (e["key"] == Sofa.constants.Key.KP_2):
-            pressureValue_left = self.pressure_left.value - 0.00001
+            pressureValue_left = self.pressure_left.value - 0.00005
             if pressureValue_left < 0:
                 pressureValue_left = self.pressure_left.value
             self.pressure_left.value = pressureValue_left
 
         if (e["key"] == Sofa.constants.Key.KP_4):
-            pressureValue_right = self.pressure_right.value + 0.00001
+            pressureValue_right = self.pressure_right.value + 0.00005
             if pressureValue_right > 1:
                 pressureValue_right = 1
             self.pressure_right.value = pressureValue_right
-
+        
         if (e["key"] == Sofa.constants.Key.KP_5):
-            pressureValue_right = self.pressure_right.value - 0.00001
+            pressureValue_right = self.pressure_right.value - 0.00005
             if pressureValue_right < 0:
                 pressureValue_right = self.pressure_right.value
             self.pressure_right.value = pressureValue_right
@@ -227,8 +227,8 @@ def createScene(rootNode):
     skin.addObject("FixedConstraint", indices="@FixedROI.indices")
     skin.addObject("GenericConstraintCorrection")
 
-    skin.addObject("BoxROI", template="Vec3d", box="-20 -20 120 20 20 150", drawBoxes="1", name="trash", drawSize="0.5", position = "@DOFs.position", tetrahedra = "@topology.tetrahedra")
-    skin.addObject("TopologicalChangeProcessor", listening = 1, useDataInputs = 1, tetrahedraToRemove="@trash.tetrahedronIndices", interval=0.1)
+    # skin.addObject("BoxROI", template="Vec3d", box="-20 -20 120 20 20 150", drawBoxes="1", name="trash", drawSize="0.5", position = "@DOFs.position", tetrahedra = "@topology.tetrahedra")
+    # skin.addObject("TopologicalChangeProcessor", listening = 1, useDataInputs = 1, tetrahedraToRemove="@trash.tetrahedronIndices", interval=0.1)
 
     ## Collision node
 
@@ -256,7 +256,7 @@ def createScene(rootNode):
     # #########################################
     # # Fibers                                 #
     # ######################################### 
-    # fiber = skin.addChild(fiber_node(name="fiber", parent=skin,Ks = 1e5, Kd = 5))
+    fiber = skin.addChild(fiber_node(name="fiber", parent=skin,Ks = 1e5, Kd = 5))
     
     # #########################################
     # # Chambers                                 #

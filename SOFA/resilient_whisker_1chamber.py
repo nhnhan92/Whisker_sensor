@@ -187,7 +187,7 @@ class controller(Sofa.Core.Controller):
             self.pressure.value = [pressureValue]
 
         if e["key"] == Sofa.constants.Key.minus:
-            pressureValue = self.self.pressure.value - 0.0001
+            pressureValue = self.pressure.value - 0.0001
             if pressureValue < 0:
                 pressureValue = 0
             self.pressure.value = [pressureValue]
@@ -277,6 +277,9 @@ def createScene(rootNode):
                         triangles='@topo.triangles', valueType='pressure')
     cavity.addObject('BarycentricMapping', name='mapping', mapForces=False, mapMasses=False)
 
+    # visual_cavity = cavity.addChild('visual')
+    # visual_cavity.addObject("OglModel", name="Visual", template="Vec3d", color="blue")
+    # visual_cavity.addObject("IdentityMapping", template="Vec3d,Vec3d", name="visualMapping", input="@../cavity", output="@Visual")
     ##########################################
     # Fibers                                 #
     ##########################################

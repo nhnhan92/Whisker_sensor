@@ -52,7 +52,7 @@ def fiber_node(name, parent, Ks, Kd):
     # Fibers                                 #
     ######################################### 
     # for chamber in range(len(chamber_name)):
-    for chamber in range(1,2):
+    for chamber in range(len(chamber_name)):
         for fiber_idx in range (len(chamber_name)):
             fiber = self.addChild('fiber'+str(fiber_idx)+"_"+chamber_name[chamber])
             # fiber = parent.addChild(name+chamber[cavity_idx])
@@ -79,16 +79,14 @@ def chamber_node (name, parent):
     chamber = ["right", "left"]
     for cavity_idx in range(len(chamber)):
         cavity = self.addChild('cavity_'+chamber[cavity_idx])
-        # cavity = parent.addChild(name+chamber[cavity_idx])
         cavity.addObject('MeshSTLLoader', name='loader', filename='mesh/whisker_chamber_'+chamber[cavity_idx]+'.stl',rotation=[0, 0, 0])
         cavity.addObject('MeshTopology', src='@loader', name='topo')
         cavity.addObject('MechanicalObject', name='cavity')
-        if cavity_idx == 0:
-            cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint', template='Vec3', value=0,
-                                triangles='@topo.triangles', valueType='pressure')
-        else:
-            cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint', template='Vec3', value=0,
-                                triangles='@topo.triangles', valueType='pressure')
-        cavity.addObject('BarycentricMapping', name='mapping', mapForces = 0, mapMasses = 0)
+        cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint', template='Vec3', value=0, flipNormal = 1,
+                            triangles='@topo.triangles', valueType='pressure')
+        cavity.addObject('BarycentricMapping', name='mapping', input = parent.getLinkPath())
+        # visual_cavity = cavity.addChild('visual')
+        # visual_cavity.addObject("OglModel", name="Visual", template="Vec3d", color="blue")
+        # visual_cavity.addObject("IdentityMapping", template="Vec3d,Vec3d", name="visualMapping", input="@../cavity", output="@Visual")
     
     return self

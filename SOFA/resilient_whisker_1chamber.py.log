@@ -26,3 +26,8 @@
 /whisker/cavity/SurfacePressureConstraint.cavityVolume = 6727.17
 /whisker/cavity/SurfacePressureConstraint.pressure = 0.000501
 /whisker/cavity/SurfacePressureConstraint.volumeGrowth = 592.906
+
+--- NEW SESSION: 17/09/2023 21:15:59 ---
+/whisker/cavity/cavity.showColor = 1 1 1 1
+/whisker/cavity/topo.drawEdges = 1
+/whisker/cavity/topo.drawTriangles = 1
