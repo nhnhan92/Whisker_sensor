@@ -29,12 +29,14 @@ box_markers_points = gmsh.model.getEntitiesInBoundingBox(xmin1 - 5, ymin1 - 5, -
                                                          ymax1 + 5, -5, 0)
 
 
-gmsh.model.occ.mesh.setSize(gmsh.model.getEntities(0), lc)
+gmsh.model.mesh.setSize(gmsh.model.getEntities(0), lc)
 # gmsh.model.occ.mesh.setSize(box_markers_points, lc_marker)
 
+# gmsh.model.mesh.setOutwardOrientation(tag)
 gmsh.model.occ.synchronize()
 gmsh.model.mesh.generate(2)
-
+gmsh.fltk.run()
+gmsh.finalize()
 
 # outer_surfaces = [2,3]
 # outer_lines = [5,6,7,8,9,10]
@@ -90,6 +92,5 @@ gmsh.model.mesh.generate(2)
 # print(len((gmsh.model.mesh.getElements(0,-1))[2]))
 # gmsh.option.setNumber("Geometry.SurfaceLabels", 1)
 
-gmsh.fltk.run()
-gmsh.finalize()
+
 #     return idx_insurface_skin, pos_insurface_skin

@@ -5,7 +5,7 @@ import csv
 import math as m
 
 def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = None,
-		coarse_points = 2000, fine_points = 20000, h = 24, draw = False):
+		coarse_points = 3000, fine_points = 20000, h = 25, draw = False):
 	final_helix = []
 	for i in range(number_chambers):
 		final_helix.append([])
