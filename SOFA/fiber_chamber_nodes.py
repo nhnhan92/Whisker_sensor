@@ -52,7 +52,7 @@ def fiber_node(name, parent, Ks, Kd):
     # Fibers                                 #
     ######################################### 
     # for chamber in range(len(chamber_name)):
-    for chamber in range(1,2):
+    for chamber in range(len(chamber_name)):
         for fiber_idx in range (len(chamber_name)):
             fiber = self.addChild('fiber'+str(fiber_idx)+"_"+chamber_name[chamber])
             # fiber = parent.addChild(name+chamber[cavity_idx])
