@@ -77,14 +77,18 @@ def chamber_node (name, parent):
     # Constraint							 #
     ##########################################
     chamber = ["right", "left"]
-    for cavity_idx in range(2):
+    for cavity_idx in range(len(chamber)):
         cavity = self.addChild('cavity_'+chamber[cavity_idx])
         # cavity = parent.addChild(name+chamber[cavity_idx])
         cavity.addObject('MeshSTLLoader', name='loader', filename='mesh/whisker_chamber_'+chamber[cavity_idx]+'.stl',rotation=[0, 0, 0])
         cavity.addObject('MeshTopology', src='@loader', name='topo')
         cavity.addObject('MechanicalObject', name='cavity')
-        cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint', template='Vec3', value=0,
-                            triangles='@topo.triangles', valueType='pressure')
-        cavity.addObject('BarycentricMapping', name='mapping', input = parent.getLinkPath())
+        if cavity_idx == 0:
+            cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint', template='Vec3', value=0,
+                                triangles='@topo.triangles', valueType='pressure')
+        else:
+            cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint', template='Vec3', value=0,
+                                triangles='@topo.triangles', valueType='pressure')
+        cavity.addObject('BarycentricMapping', name='mapping', mapForces = 0, mapMasses = 0)
     
     return self

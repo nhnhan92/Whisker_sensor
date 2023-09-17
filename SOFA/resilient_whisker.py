@@ -131,11 +131,11 @@ class controller(Sofa.Core.Controller):
         self.trash_roi = self.whisker.getObject("trash")
         self.current_trash_roi = self.trash_roi.findData("box").value
         
-        # self.chamber_node = self.whisker.getChild("chamber")
-        self.chamber_right = self.whisker.getChild("cavity_right")
+        self.chamber_node = self.whisker.getChild("chamber")
+        self.chamber_right = self.chamber_node.getChild("cavity_right")
         self.pressure_right = self.chamber_right.getObject('SurfacePressureConstraint')
 
-        self.chamber_left = self.whisker.getChild('cavity_left')
+        self.chamber_left = self.chamber_node.getChild('cavity_left')
         self.pressure_left = self.chamber_left.getObject('SurfacePressureConstraint')
 
 
@@ -157,16 +157,28 @@ class controller(Sofa.Core.Controller):
         if e["key"] == Sofa.constants.Key.downarrow:
             self.moveRestPos(self.mecawhisker.findData("position").value, -increment, 0, 0)
 
-        if (e["key"] == Sofa.constants.Key.plus):
-            pressureValue_left = self.pressure_left.value + 0.0001
+        if (e["key"] == Sofa.constants.Key.KP_1):
+            pressureValue_left = self.pressure_left.value + 0.00001
             if pressureValue_left > 1:
                 pressureValue_left = 1
             self.pressure_left.value = pressureValue_left
 
-        if (e["key"] == Sofa.constants.Key.minus):
-            pressureValue_right = self.pressure_right.value + 0.0001
+        if (e["key"] == Sofa.constants.Key.KP_2):
+            pressureValue_left = self.pressure_left.value - 0.00001
+            if pressureValue_left < 0:
+                pressureValue_left = self.pressure_left.value
+            self.pressure_left.value = pressureValue_left
+
+        if (e["key"] == Sofa.constants.Key.KP_4):
+            pressureValue_right = self.pressure_right.value + 0.00001
             if pressureValue_right > 1:
                 pressureValue_right = 1
+            self.pressure_right.value = pressureValue_right
+
+        if (e["key"] == Sofa.constants.Key.KP_5):
+            pressureValue_right = self.pressure_right.value - 0.00001
+            if pressureValue_right < 0:
+                pressureValue_right = self.pressure_right.value
             self.pressure_right.value = pressureValue_right
 
 
@@ -177,7 +189,7 @@ class controller(Sofa.Core.Controller):
 
 def createScene(rootNode):
     rootNode.gravity.value = [0, -9810, 0]
-    rootNode.dt = 0.05
+    rootNode.dt = 0.01
 
     rootNode.addObject("RequiredPlugin",pluginName="Sofa.Component.Collision.Detection.Algorithm Softrobots SofaPython3")
     rootNode.addObject("VisualStyle",displayFlags="showVisualModels hideBehaviorModels hideCollisionModels hideBoundingCollisionModels hideForceFields showInteractionForceFields hideWireframe")
@@ -185,7 +197,7 @@ def createScene(rootNode):
     rootNode.addObject("DefaultPipeline", name="CollisionPipeline", draw=0)
     rootNode.addObject("FreeMotionAnimationLoop")
     rootNode.addObject("GenericConstraintSolver",name="constraint solver", tolerance=1e-12,maxIterations=100000,computeConstraintForces=0)
-    rootNode.addObject("LCPConstraintSolver", maxIt = "1000", tolerance = "0.001")
+    rootNode.addObject("LCPConstraintSolver", maxIt = "100000", tolerance = "0.00001")
     rootNode.addObject("BruteForceBroadPhase")
     rootNode.addObject("BVHNarrowPhase")
     rootNode.addObject("DefaultContactManager", name="collision response", response="FrictionContactConstraint", responseParams="mu=0.6")
@@ -204,8 +216,8 @@ def createScene(rootNode):
     skin.addObject("TetrahedronSetTopologyContainer", src="@loader", name="topology")
     skin.addObject("TetrahedronSetTopologyModifier", name="Modifier")
     skin.addObject("TetrahedronSetGeometryAlgorithms", name="GeomAlgo", template="Vec3d")
-    skin.addObject("UniformMass", totalMass="0.000012", name="mass")
-    skin.addObject("TetrahedralCorotationalFEMForceField", template="Vec3", name="FEM", method="large", poissonRatio=0.45, youngModulus=1, updateStiffnessMatrix=0, rayleighStiffness=0)
+    skin.addObject("UniformMass", totalMass="0.0000012", name="mass")
+    skin.addObject("TetrahedronFEMForceField", template="Vec3", name="FEM", method="large", poissonRatio=0.45, youngModulus=2)
     skin.addObject("BoxROI", template="Vec3d", box="-20 -20 -1 20 20 1", drawBoxes="1", name="FixedROI", computeEdges="1", computeTriangles="0",
         computeTetrahedra="0",
         computeHexahedra="0",
@@ -249,17 +261,8 @@ def createScene(rootNode):
     # #########################################
     # # Chambers                                 #
     # ######################################### 
-    # skin.addChild(chamber_node(name= "chamber", parent=skin))
-    # chamber = ["right", "left"]
-    # for cavity_idx in range(2):
-    #     cavity = skin.addChild('cavity_'+chamber[cavity_idx])
-    #     # cavity = parent.addChild(name+chamber[cavity_idx])
-    #     cavity.addObject('MeshSTLLoader', name='loader', filename='mesh/whisker_chamber_'+chamber[cavity_idx]+'.stl',rotation=[0, 0, 0])
-    #     cavity.addObject('MeshTopology', src='@loader', name='topo')
-    #     cavity.addObject('MechanicalObject', name='cavity')
-    #     cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint', template='Vec3', value=0,
-    #                         triangles='@topo.triangles', valueType='pressure')
-    #     cavity.addObject('BarycentricMapping', name='mapping')
+    skin.addChild(chamber_node(name= "chamber", parent=skin))
+
     # planeNode = rootNode.addChild('Plane')
     # planeNode.addObject('MeshSTLLoader', name='loader', filename='mesh/plane.stl', translation=[130, 0, 100], flipNormals=1)
     # planeNode.addObject('MeshTopology', src='@loader')

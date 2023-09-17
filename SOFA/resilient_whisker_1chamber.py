@@ -273,7 +273,7 @@ def createScene(rootNode):
     cavity.addObject('MeshSTLLoader', name='loader', filename='mesh/whisker_chamber_stl.stl',rotation=[0, 0, 0])
     cavity.addObject('MeshTopology', src='@loader', name='topo')
     cavity.addObject('MechanicalObject', name='cavity')
-    cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint',flipNormal = 1, template='Vec3', value=0.000001,
+    cavity.addObject('SurfacePressureConstraint', name='SurfacePressureConstraint',flipNormal = 0, template='Vec3', value=0.000001,
                         triangles='@topo.triangles', valueType='pressure')
     cavity.addObject('BarycentricMapping', name='mapping', mapForces=False, mapMasses=False)
 
