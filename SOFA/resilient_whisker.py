@@ -197,7 +197,6 @@ def createScene(rootNode):
     rootNode.addObject("DefaultPipeline", name="CollisionPipeline", draw=0)
     rootNode.addObject("FreeMotionAnimationLoop")
     rootNode.addObject("GenericConstraintSolver",name="constraint solver", tolerance=1e-12,maxIterations=100000,computeConstraintForces=0)
-    rootNode.addObject("LCPConstraintSolver", maxIt = "100000", tolerance = "0.00001")
     rootNode.addObject("BruteForceBroadPhase")
     rootNode.addObject("BVHNarrowPhase")
     rootNode.addObject("DefaultContactManager", name="collision response", response="FrictionContactConstraint", responseParams="mu=0.6")
@@ -233,10 +232,6 @@ def createScene(rootNode):
     ## Collision node
 
     skinCollision = skin.addChild("SkinCollision")
-    # skinCollision.addObject("MeshSTLLoader", filename="mesh/whisker_stl.stl", name="loader2", flipNormals=0, rotation=[180, 0, 0])
-    # skinCollision.addObject("MeshTopology", src="@loader2", name="topology2")
-    # skinCollision.addObject("TriangleSetTopologyContainer",src="@loader2", name="topology2")
-    # skinCollision.addObject("MechanicalObject", name="collisMech")
     skinCollision.addObject("TriangleSetTopologyContainer", name="topology2")
     skinCollision.addObject("TriangleSetTopologyModifier", name="Modifier2")
     skinCollision.addObject("TriangleSetGeometryAlgorithms", name="GeomAlgo2", template="Vec3d")
