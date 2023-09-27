@@ -246,6 +246,7 @@ def createScene(rootNode):
     ## Visual node
     visual = skin.addChild("Visual")
     visual.addObject("OglModel", name="Visual", template="Vec3d", color="yellow")
+    
     # visual.addObject("BarycentricMapping")
     visual.addObject("IdentityMapping", template="Vec3d,Vec3d", name="visualMapping", input="@../DOFs", output="@Visual")
     # #########################################
