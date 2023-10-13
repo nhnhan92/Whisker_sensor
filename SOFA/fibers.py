@@ -7,7 +7,7 @@ import math as m
 # activate pylustrator
 # pylustrator.start()
 def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = None,
-		coarse_points = 3000, fine_points = 20000, h = 25, draw = False):
+		coarse_points = 2200, fine_points = 20000, h = 25, draw = False):
 	final_helix = []
 	for i in range(number_chambers):
 		final_helix.append([])
