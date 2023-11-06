@@ -7,7 +7,7 @@ import math as m
 # activate pylustrator
 # pylustrator.start()
 def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = None,
-		coarse_points = 3000, fine_points = 20000, h = 25, draw = False):
+		coarse_points = 2200, fine_points = 20000, h = 25, draw = False):
 	final_helix = []
 	for i in range(number_chambers):
 		final_helix.append([])
@@ -164,9 +164,9 @@ def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = N
 					if final_helix[i][j][2]<h:
 						writer.writerow([j,final_helix[i][j][0],final_helix[i][j][1],final_helix[i][j][2],cutting_plane])
 	
-	init_helix_path(number_points= coarse_points, draw=0, save=0)
-	init_curve = trimming_helix(number_points=coarse_points, draw=0)
-	trimmed_points_curve = trimming_helix(number_points=fine_points, draw=0)
+	init_helix_path(number_points= coarse_points, draw=1, save=0)
+	init_curve = trimming_helix(number_points=coarse_points, draw=1)
+	trimmed_points_curve = trimming_helix(number_points=fine_points, draw=1)
 	point_in_plane = sort_trimmed_curves(trimmed_points_curve=trimmed_points_curve)
 	final_helix = []
 	for i in range(len(init_curve)):
@@ -182,7 +182,7 @@ def fibers(number_chambers = 2,r = 11, p = 2, H = 142.3862887, cutting_plane = N
 			# Insert the new point at the calculated index
 			revised_helix = np.insert(revised_helix, insert_index_z, point_in_plane[i][j], axis=0)	
 		for k in range(0,int(len(point_in_plane[i])/2)-1):
-			n = 10  # Change this to the desired number of points
+			n = 5  # Change this to the desired number of points
 			step_size = 1.0 / (n - 1)
 			intermediate_points = []
 			for g in range(n):

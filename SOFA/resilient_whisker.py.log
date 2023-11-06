@@ -311,3 +311,47 @@
 =======
 >>>>>>> 623cdcb94aecf3ca9750ef19cee07e40836cf3d5
 >>>>>>> e66cc819682b0b915f40a5a8c151277dc6c7f3d7
+
+--- NEW SESSION: 13/10/2023 16:44:29 ---
+/whisker/fiber/fiber0_right/springs.showArrowSize = 2
+/whisker/fiber/fiber1_right/DOF.showObject = 0
+/whisker/fiber/fiber1_right/DOF.showColor = 1 1 1 1
+/whisker/fiber/fiber0_right/DOF.showColor = 1 1 1 1
+/whisker/fiber/fiber0_right/DOF.showObject = 0
+/whisker/fiber/fiber0_left/lines.drawEdges = 0
+/whisker/fiber/fiber0_left/DOF.showVectors = 1
+/whisker/fiber/fiber0_left/DOF.showVectorsScale = 0.0401
+/whisker/fiber/fiber0_left/DOF.drawMode = 0
+/whisker/fiber/fiber0_left/DOF.showColor = 1 1 1 1
+/whisker/fiber/fiber0_left/springs.showArrowSize = 1
+/whisker/fiber/fiber0_left/springs.showArrowSize = 0.2
+/whisker/fiber/fiber1_left/springs.showArrowSize = 0.2
+
+--- NEW SESSION: 13/10/2023 18:02:18 ---
+/whisker/chamber/cavity_right/SurfacePressureConstraint.value = 0
+
+--- NEW SESSION: 06/11/2023 09:48:30 ---
+/whisker/fiber/fiber0_right/springs.showArrowSize = 0.5
+/whisker/fiber/fiber0_right/springs.drawMode = 1
+
+--- NEW SESSION: 06/11/2023 09:48:32 ---
+/whisker/fiber/fiber0_right/springs.showArrowSize = 0.5
+/whisker/fiber/fiber0_right/springs.drawMode = 1
+/whisker/fiber/fiber0_right/springs.showArrowSize = 0.5
+/whisker/fiber/fiber0_right/springs.drawMode = 1
+
+--- NEW SESSION: 06/11/2023 09:49:18 ---
+/whisker/fiber/fiber0_right/springs.showArrowSize = 0.2
+/whisker/fiber/fiber0_right/DOF.showObject = 0
+/whisker/fiber/fiber0_right/DOF.showColor = 1 1 1 1
+/whisker/fiber/fiber0_right/DOF.showObjectScale = 1
+/whisker/fiber/fiber1_right/springs.showArrowSize = 0.2
+/whisker/fiber/fiber1_left/springs.showArrowSize = 0.2
+/whisker/fiber/fiber0_left/springs.showArrowSize = 0.2
+/whisker/fiber/fiber0_right/DOF.showColor = 1 1 1 1
+/whisker/fiber/fiber1_right/DOF.showObject = 0
+/whisker/fiber/fiber1_right/DOF.showColor = 1 1 1 1
+/whisker/fiber/fiber0_left/DOF.showObject = 0
+/whisker/fiber/fiber0_left/DOF.showColor = 1 1 1 1
+/whisker/fiber/fiber1_left/DOF.showObject = 0
+/whisker/fiber/fiber1_left/DOF.showColor = 1 1 1 1
