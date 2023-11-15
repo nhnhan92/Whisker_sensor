@@ -217,7 +217,7 @@ def createScene(rootNode):
     skin.addObject("TetrahedronSetGeometryAlgorithms", name="GeomAlgo", template="Vec3d")
     skin.addObject("UniformMass", totalMass="0.0000012", name="mass")
     skin.addObject("TetrahedronFEMForceField", template="Vec3", name="FEM", method="large", poissonRatio=0.45, youngModulus=2)
-    skin.addObject("BoxROI", template="Vec3d", box="-20 -20 -1 20 20 1", drawBoxes="1", name="FixedROI", computeEdges="1", computeTriangles="0",
+    skin.addObject("BoxROI", template="Vec3d", box="-20 -20 -1 20 20 1", drawBoxes="0", name="FixedROI", computeEdges="1", computeTriangles="0",
         computeTetrahedra="0",
         computeHexahedra="0",
         drawSize="0.5",

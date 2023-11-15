@@ -58,12 +58,12 @@ def fiber_node(name, parent, Ks, Kd):
             # fiber = parent.addChild(name+chamber[cavity_idx])
             fiber.addObject("MechanicalObject", template="Vec3", name="DOF",
                             position=fiber_dof[chamber][fiber_idx],
-                            showObject=True, showObjectScale=3,translation=[0, 0, 0.1])
+                            showObject=0, showObjectScale=3,translation=[0, 0, 0.1])
             fiber.addObject('MeshTopology', name='lines', lines=[[i, i + 1] for i in range(len(fiber_dof[chamber][fiber_idx])-1)]) 
             fiber.addObject('UniformMass', totalMass=0.000008)
             fiber.addObject("FixedConstraint", name="FixedConstraint", indices=[0])
 
-            fiber.addObject("StiffSpringForceField", template="Vec3d", name="springs", showArrowSize=1, drawMode=1,spring=spring_info[chamber][fiber_idx])
+            fiber.addObject("StiffSpringForceField", template="Vec3d", name="springs", showArrowSize=0.2, drawMode=1,spring=spring_info[chamber][fiber_idx])
             fiber.addObject('BarycentricMapping', name='mapping', input = parent.getLinkPath())
             parent.addObject('MechanicalMatrixMapper', template="Vec3,Vec3", name="mapper"+str(fiber_idx)+"_"+chamber_name[chamber],
                                 nodeToParse=fiber.getLinkPath(),  # where to find the forces to map
