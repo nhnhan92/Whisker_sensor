@@ -6,7 +6,7 @@ import os
 gmsh.initialize()
 
 # Element size for creating mechanical model
-lc = 3
+lc = 4
 lc_marker = 3
 # # Element size for creating visual model
 # lc = 5
