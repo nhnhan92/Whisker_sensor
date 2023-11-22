@@ -6,7 +6,7 @@ import os
 gmsh.initialize()
 
 # Element size for creating mechanical model
-lc = 4
+lc = 4.5
 lc_marker = 3
 # # Element size for creating visual model
 # lc = 5
@@ -16,24 +16,24 @@ lc_marker = 3
 gmsh.option.setNumber("General.Terminal", 0)
 
 gmsh.model.add("Taclink")
-path = os.path.dirname(os.path.abspath(__file__))
-# v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_sample_SOFA.STEP'))
-v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_2chamber.STEP'))
+# path = os.path.dirname(os.path.abspath(__file__))
+# # v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_sample_SOFA.STEP'))
+# v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_2chamber.STEP'))
 
-gmsh.model.occ.synchronize()
-xmin1, ymin1, zmin1, xmax1, ymax1, zmax1 = gmsh.model.getBoundingBox(
-    v1[0][0], v1[0][1])
+# gmsh.model.occ.synchronize()
+# xmin1, ymin1, zmin1, xmax1, ymax1, zmax1 = gmsh.model.getBoundingBox(
+#     v1[0][0], v1[0][1])
 
-box_markers_points = gmsh.model.getEntitiesInBoundingBox(xmin1 - 5, ymin1 - 5, -255, xmax1 + 5,
-                                                         ymax1 + 5, -5, 0)
-print(len(box_markers_points))
+# box_markers_points = gmsh.model.getEntitiesInBoundingBox(xmin1 - 5, ymin1 - 5, -255, xmax1 + 5,
+#                                                          ymax1 + 5, -5, 0)
+# print(len(box_markers_points))
 
 
-gmsh.model.occ.mesh.setSize(gmsh.model.getEntities(0), lc)
-# gmsh.model.occ.mesh.setSize(box_markers_points, lc_marker)
+# gmsh.model.occ.mesh.setSize(gmsh.model.getEntities(0), lc)
+# # gmsh.model.occ.mesh.setSize(box_markers_points, lc_marker)
 
-gmsh.model.occ.synchronize()
-gmsh.model.mesh.generate(3)
+# gmsh.model.occ.synchronize()
+# gmsh.model.mesh.generate(3)
 
 
 # outer_surfaces = [2,3]
