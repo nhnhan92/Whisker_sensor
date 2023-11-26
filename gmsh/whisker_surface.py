@@ -8,6 +8,7 @@ gmsh.initialize()
 # Element size for creating mechanical model
 lc = 3
 lc_marker = 3
+lc_pole = 3
 # # Element size for creating visual model
 # lc = 5
 
@@ -17,7 +18,8 @@ gmsh.option.setNumber("General.Terminal", 0)
 
 gmsh.model.add("Taclink")
 path = os.path.dirname(os.path.abspath(__file__))
-v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_surface_SOFA.STEP'))
+# v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_surface_SOFA.STEP'))
+v1 = gmsh.model.occ.importShapes(os.path.join(path, 'pole.STEP'))
 
 gmsh.model.occ.synchronize()
 xmin1, ymin1, zmin1, xmax1, ymax1, zmax1 = gmsh.model.getBoundingBox(
@@ -27,8 +29,8 @@ box_markers_points = gmsh.model.getEntitiesInBoundingBox(xmin1 - 5, ymin1 - 5, -
                                                          ymax1 + 5, -5, 0)
 
 
-gmsh.model.occ.mesh.setSize(gmsh.model.getEntities(0), lc)
-# gmsh.model.occ.mesh.setSize(box_markers_points, lc_marker)
+# gmsh.model.occ.mesh.setSize(gmsh.model.getEntities(0), lc)
+gmsh.model.occ.mesh.setSize(gmsh.model.getEntities(0), lc_pole)
 
 gmsh.model.occ.synchronize()
 gmsh.model.mesh.generate(2)
