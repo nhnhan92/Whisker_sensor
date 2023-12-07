@@ -1,0 +1,57 @@
+
+--- NEW SESSION: 24/08/2023 10:47:44 ---
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/dofs.showObject = 1
+/Modelling/ServoMotor/Articulation/dofs.showObjectScale = 0.78
+/Modelling/ServoMotor/Articulation/dofs.showIndices = 1
+/Modelling/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/dofs.showIndicesScale = 0.77
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.showIndices = 1
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.showIndicesScale = 1.84
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.showColor = 1 0 0.498039 1
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.showObjectScale = 21.1
+/Modelling/ServoMotor/Articulation/ServoWheel/ArticulatedSystemMapping.indexInput2 = 1
+/Modelling/ServoMotor/ServoBody/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/ServoBody/dofs.showObject = 1
+/Modelling/ServoMotor/ServoBody/dofs.showObjectScale = 8.38
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.velocity = 0 0 0 0 0 0 0 0 0 0 0.287008 0
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.free_velocity = 0 0 0 0 0 0 0 0 0 0 0.283492 0
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.velocity = 0 0 0 0 0 0 0 0 0 0 0.287008 0
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.free_velocity = 0 0 0 0 0 0 0 0 0 0 0.283492 0
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.velocity = 0 0 0 0 0 0 0 0 0 0 0.287008 0
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.free_velocity = 0 0 0 0 0 0 0 0 0 0 0.283492 0
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.showColor = 1 1 1 1
+
+--- NEW SESSION: 24/08/2023 10:51:55 ---
+/Modelling/ServoMotor/ServoBody/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.velocity = 0 0 0 0 -0.581989 0 0 0 0 0 0 0
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.free_velocity = 0 0 0 0 -0.581989 0 0 0 0 0 0 0
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/dofs.showIndices = 1
+/Modelling/ServoMotor/Articulation/dofs.showVectors = 1
+/Modelling/ServoMotor/Articulation/dofs.showIndicesScale = 0.28
+/Modelling/ServoMotor/Articulation/dofs.showObject = 1
+/Modelling/ServoMotor/Articulation/dofs.showObjectScale = 1.65
+/Modelling/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/dofs.showIndices = 1
+/Modelling/ServoMotor/Articulation/dofs.showVectors = 1
+/Modelling/ServoMotor/Articulation/dofs.showIndicesScale = 0.28
+/Modelling/ServoMotor/Articulation/dofs.showObject = 1
+/Modelling/ServoMotor/Articulation/dofs.showObjectScale = 1.65
+/Modelling/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/dofs.showIndices = 1
+/Modelling/ServoMotor/Articulation/dofs.showVectors = 1
+/Modelling/ServoMotor/Articulation/dofs.showIndicesScale = 0.28
+/Modelling/ServoMotor/Articulation/dofs.showObject = 1
+/Modelling/ServoMotor/Articulation/dofs.showObjectScale = 1.65
+/Modelling/ServoMotor/Articulation/dofs.showIndicesScale = 0.91
+/Modelling/ServoMotor/Articulation/dofs.showIndices = 1
+/Modelling/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/ServoWheel/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/ArticulationCenter/Articulations/Articulation.articulationIndex = 0
+/Modelling/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ServoMotor/Articulation/ArticulationCenter/Articulations/Articulation.articulationIndex = 1

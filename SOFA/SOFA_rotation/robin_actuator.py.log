@@ -1,0 +1,66 @@
+
+--- NEW SESSION: 20/08/2023 15:30:32 ---
+/finger/boxROI.drawBoxes = 1
+
+--- NEW SESSION: 20/08/2023 16:39:45 ---
+/rot_plane/indentor.showColor = 1 1 1 1
+
+--- NEW SESSION: 20/08/2023 16:39:45 ---
+/rot_plane/indentor.showColor = 1 1 1 1
+/rot_plane/indentor.showColor = 1 1 1 1
+/rot_plane/Visual.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0.2 0 1 Specular 0 1 1 0 1 Emissive 0 1 1 0 1 Shininess 0 45 
+
+--- NEW SESSION: 20/08/2023 16:47:50 ---
+/rot_plane/Visual.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 1 1 0 0 1 Shininess 0 45 
+/rot_plane/Visual.cullFace = -2
+
+--- NEW SESSION: 20/08/2023 16:49:16 ---
+/ROBIN_actuator/Visual/Visual.material = Default Diffuse 1 1 1 0 1 Ambient 1 0.2 0.2 0 1 Specular 0 1 1 0 1 Emissive 0 1 1 0 1 Shininess 0 45 
+/rot_plane/Visual.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+
+--- NEW SESSION: 20/08/2023 16:51:07 ---
+/rot_plane/visual/Visual.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+
+--- NEW SESSION: 20/08/2023 17:13:56 ---
+/rot_plane/rot_plane.showColor = 1 1 1 1
+
+--- NEW SESSION: 20/08/2023 17:24:43 ---
+/rot_plane/Visual/MechanicalObject.showColor = 1 1 1 1
+/rot_plane/Visual/MechanicalObject.showColor = 1 1 1 1
+
+--- NEW SESSION: 20/08/2023 17:38:15 ---
+/rot_plane/Visual/visual_rot.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+
+--- NEW SESSION: 20/08/2023 17:53:24 ---
+/ROBIN_actuator/DOFs.showColor = 1 0 0 1
+
+--- NEW SESSION: 20/08/2023 20:35:04 ---
+/rot_plane/rot_plane.showColor = 1 1 1 1
+
+--- NEW SESSION: 20/08/2023 20:39:27 ---
+/rot_plane/Visual/meca_visual.velocity = 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/rot_plane/Visual/meca_visual.force = 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/rot_plane/Visual/meca_visual.externalForce = 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/rot_plane/Visual/meca_visual.showColor = 1 1 1 1
+
+--- NEW SESSION: 20/08/2023 20:48:49 ---
+/rot_plane/rot_plane.showColor = 1 1 1 1
+
+--- NEW SESSION: 20/08/2023 20:56:06 ---
+/rot_plane/rot_plane.showColor = 1 1 1 1
+
+
+--- NEW SESSION: 21/08/2023 15:09:40 ---
+/rot_plane/rot_plane.showColor = 1 1 1 1
+/rot_plane/rot_plane.showColor = 1 1 1 1
+/rot_plane/rot_plane.showColor = 1 1 1 1
+
+--- NEW SESSION: 21/08/2023 16:53:35 ---
+/ROBIN_actuator/freeROI.drawPoints = 1
+/ROBIN_actuator/freeROI.drawSize = 5
+
+--- NEW SESSION: 23/08/2023 23:30:30 ---
+/ROBIN_actuator/Visual/Visual.material = Default Diffuse 1 1 1 0 1 Ambient 1 0.2 0.2 0 1 Specular 0 1 1 0 1 Emissive 0 1 1 0 1 Shininess 0 45 
+
+--- NEW SESSION: 24/08/2023 09:49:44 ---
+/ROBIN_actuator/Visual/Visual.material = Default Diffuse 1 1 1 0 1 Ambient 1 0.2 0.2 0 1 Specular 0 1 1 0 1 Emissive 0 1 1 0 1 Shininess 0 45 
