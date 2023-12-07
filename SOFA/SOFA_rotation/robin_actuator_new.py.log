@@ -1,0 +1,70 @@
+
+--- NEW SESSION: 23/08/2023 23:14:48 ---
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+
+--- NEW SESSION: 23/08/2023 23:18:55 ---
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+
+--- NEW SESSION: 23/08/2023 23:22:13 ---
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+
+--- NEW SESSION: 23/08/2023 23:29:15 ---
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+/ROBIN_actuator/Visual/Visual.material = Default Diffuse 1 1 1 0 1 Ambient 1 0.2 0.2 0 1 Specular 0 1 1 0 1 Emissive 0 1 1 0 1 Shininess 0 45 
+/ROBIN_actuator/Visual/Visual.material = Default Diffuse 1 1 1 0 1 Ambient 1 0.2 0.2 0 1 Specular 0 1 1 0 1 Emissive 0 1 1 0 1 Shininess 0 45 
+
+--- NEW SESSION: 23/08/2023 23:37:52 ---
+/Modelling/ROBIN_actuator/ElasticBody/VisualModel/renderer.material = Default Diffuse 1 1 0 0 1 Ambient 1 0.2 0 0 1 Specular 0 1 0 0 1 Emissive 0 1 0 0 1 Shininess 0 45 
+
+--- NEW SESSION: 24/08/2023 14:40:06 ---
+/Modelling/ROBIN_actuator/ElasticBody/MechanicalModel/RestShapeSpringsForceField.springColor = 0 1 0 1
+
+--- NEW SESSION: 24/08/2023 14:57:26 ---
+/Modelling/FixingBox/BoxROI.drawPoints = 1
+
+--- NEW SESSION: 24/08/2023 22:36:03 ---
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/ServoBody/VisualModel/OglModel.material = Default Diffuse 1 0.14902 0.447059 0.74902 0.698039 Ambient 1 0.027451 0.0862745 0.14902 0.698039 Specular 0 0.14902 0.447059 0.74902 0.698039 Emissive 0 0.14902 0.447059 0.74902 0.698039 Shininess 0 45 
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+
+--- NEW SESSION: 24/08/2023 23:01:00 ---
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/ServoBody/dofs.force = -0.827488 -93.7187 -0.4213 16.7965 108.512 -2.96035
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/ServoBody/dofs.showColor = 1 1 1 1
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor.time = 29.06
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor.angleIn = 0.24869
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+/Modelling/ROBIN_actuator/Articulation_system/ServoMotor/Articulation/dofs.showColor = 1 1 1 1
+
+--- NEW SESSION: 25/08/2023 00:22:31 ---
+/Modelling/PartialBox/Constraint/partialFixedConstraint.drawSize = 0.53
+/Modelling/PartialBox/Constraint/partialFixedConstraint.projectVelocity = 1
+/Modelling/PartialBox/Constraint/partialFixedConstraint.drawSize = 0.53
+/Modelling/PartialBox/Constraint/partialFixedConstraint.projectVelocity = 1
+/Modelling/PartialBox/Constraint/partialFixedConstraint.drawSize = 0.53
+/Modelling/PartialBox/Constraint/partialFixedConstraint.projectVelocity = 1
+
+--- NEW SESSION: 25/08/2023 00:26:18 ---
+/Modelling/PartialBox/Constraint.time = 13.98
+/Modelling/PartialBox/Constraint.time = 14.51
+/Modelling/ROBIN_actuator/RigidifiedBase/DeformableParts/dofs.showColor = 1 1 1 1
+/Modelling/ROBIN_actuator/RigidifiedBase/DeformableParts/dofs.showObjectScale = 1.49
+/Modelling/ROBIN_actuator/RigidifiedBase/DeformableParts/dofs.showObject = 1
+/Modelling/ROBIN_actuator/RigidifiedBase/RigidParts/dofs.showObject = 1
+/Modelling/ROBIN_actuator/RigidifiedBase/RigidParts/dofs.showObjectScale = 9.41
+/Modelling/ROBIN_actuator/RigidifiedBase/RigidParts/dofs.showColor = 1 1 1 1
+/Modelling/ROBIN_actuator/RigidifiedBase/RigidParts/RigidifiedParticules/dofs.showObjectScale = 7.15
+/Modelling/ROBIN_actuator/RigidifiedBase/RigidParts/RigidifiedParticules/dofs.showObject = 1
+/Modelling/ROBIN_actuator/RigidifiedBase/RigidParts/RigidifiedParticules/dofs.showColor = 1 1 1 1

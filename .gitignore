@@ -17,3 +17,4 @@ gmsh/demos/
 gmsh/tutorial/
 matlab_file/
 SOFA/test_fibers.ipynb
+*.SLDWRD
