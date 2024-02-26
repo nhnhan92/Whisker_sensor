@@ -6,7 +6,7 @@ import os
 gmsh.initialize()
 
 # Element size for creating mechanical model
-lc = 10
+lc = 2
 lc_marker = 3
 # # Element size for creating visual model
 # lc = 5
@@ -25,7 +25,6 @@ xmin1, ymin1, zmin1, xmax1, ymax1, zmax1 = gmsh.model.getBoundingBox(
 
 box_markers_points = gmsh.model.getEntitiesInBoundingBox(xmin1 - 5, ymin1 - 5, -255, xmax1 + 5,
                                                          ymax1 + 5, -5, 0)
-print(len(box_markers_points))
 
 
 gmsh.model.occ.mesh.setSize(gmsh.model.getEntities(0), lc)
