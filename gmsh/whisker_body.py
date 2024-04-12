@@ -6,7 +6,7 @@ import os
 gmsh.initialize()
 
 # Element size for creating mechanical model
-lc = 5
+lc = 4
 lc_marker = 3
 # # Element size for creating visual model
 # lc = 5
@@ -17,8 +17,9 @@ gmsh.option.setNumber("General.Terminal", 0)
 
 gmsh.model.add("Taclink")
 path = os.path.dirname(os.path.abspath(__file__))
-# v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_sample_SOFA.STEP'))
-v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_2chamber.STEP'))
+v1 = gmsh.model.occ.importShapes(os.path.join(path, 'length_100/whisker_1chamber_100.STEP'))
+# v1 = gmsh.model.occ.importShapes(os.path.join(path, 'length_100/whisker_2chamber_100.STEP'))
+# v1 = gmsh.model.occ.importShapes(os.path.join(path, 'length_90/whisker_2chamber_90.STEP'))
 
 gmsh.model.occ.synchronize()
 xmin1, ymin1, zmin1, xmax1, ymax1, zmax1 = gmsh.model.getBoundingBox(
