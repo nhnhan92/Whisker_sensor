@@ -44,16 +44,20 @@ chamber_top_radius = chamber_bot_radius - (chamber_height/m.tan(chamber_cone_ang
 no_chamber = 2
 chamber_dist = 1.5
 chamber_rel_angle = 360*m.pi/(no_chamber*180)
-
-# if no_chamber < 2:
-#     pass
-# else:
-#     for i in range(no_chamber):
-# Chamber construction
-gmsh.model.occ.addPoint(chamber_dist, 0, 0, 5, -1)
-gmsh.model.occ.addPoint(chamber_dist, chamber_bot_radius, 0, 5, -1)
-gmsh.model.occ.addPoint(chamber_dist, chamber_top_radius, chamber_height, 5, -1)
-gmsh.model.occ.addPoint(chamber_dist, 0, chamber_height, 5, -1)
+init_p = [0,0]
+if no_chamber == 1:
+    rot_axis = [0, 0, 0, 0, 0, 1]
+elif no_chamber == 2:
+    init_p = [0,chamber_dist]
+    rot_axis = [0, chamber_dist, 0, 0, chamber_dist, 1]
+else:
+    init_p = [chamber_dist*m.tan(30),chamber_dist]
+    rot_axis = [0, 0, 0, 0, 0, 1]
+print (init_p)
+gmsh.model.occ.addPoint(init_p[0], init_p[1], 0, 5, -1)
+gmsh.model.occ.addPoint(init_p[0], chamber_bot_radius, 0, 5, -1)
+gmsh.model.occ.addPoint(init_p[0], chamber_top_radius, chamber_height, 5, -1)
+gmsh.model.occ.addPoint(init_p[0], init_p[1], chamber_height, 5, -1)
 
 gmsh.model.occ.addLine(4, 5, tag=-1)
 gmsh.model.occ.addLine(5, 6, tag=-1)
@@ -64,7 +68,7 @@ gmsh.model.occ.synchronize()
 
 a = gmsh.model.occ.addCurveLoop([7, 8, 9, 10], -1)
 chamber_plane = gmsh.model.occ.addPlaneSurface([a], tag=-1)
-chamber = gmsh.model.occ.revolve([(2, chamber_plane)], 0, 0, 0, 0, 0, 1, chamber_rel_angle)
+chamber = gmsh.model.occ.revolve([(2, chamber_plane)], 0, 1.5, 0, 0, 0, 1, chamber_rel_angle)
 gmsh.model.occ.remove([(2, chamber_plane)], recursive=1)
 
 gmsh.model.occ.synchronize()
