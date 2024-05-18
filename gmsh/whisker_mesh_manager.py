@@ -43,6 +43,7 @@ chamber_height = 24
 chamber_top_radius = chamber_bot_radius - (chamber_height/m.tan(chamber_cone_angle))
 no_chamber = 2
 chamber_dist = 1.5
+chamber_rel_angle = 360*m.pi/(no_chamber*180)
 
 # if no_chamber < 2:
 #     pass
@@ -63,7 +64,7 @@ gmsh.model.occ.synchronize()
 
 a = gmsh.model.occ.addCurveLoop([7, 8, 9, 10], -1)
 chamber_plane = gmsh.model.occ.addPlaneSurface([a], tag=-1)
-chamber = gmsh.model.occ.revolve([(2, chamber_plane)], 0, 0, 0, 0, 0, 1, m.pi*2)
+chamber = gmsh.model.occ.revolve([(2, chamber_plane)], 0, 0, 0, 0, 0, 1, chamber_rel_angle)
 gmsh.model.occ.remove([(2, chamber_plane)], recursive=1)
 
 gmsh.model.occ.synchronize()
