@@ -3,7 +3,7 @@ import math as m
 import os
 
 def chamber(no_chamber = int):
-    if no_chamber == 3:
+    if no_chamber >= 3:
         rot_axis = [0, 0, 0, 0, 0, 1]
         init_p = []
         for i in range(no_chamber):
@@ -15,46 +15,48 @@ def chamber(no_chamber = int):
                         0],
                         [m.cos(chamber_rel_angle*i)*chamber_top_radius-m.sin(chamber_rel_angle*i)*chamber_dist,
                         m.sin(chamber_rel_angle*i)*chamber_top_radius+m.cos(chamber_rel_angle*i)*chamber_dist,
-                        0],
+                        chamber_height],
                         [m.cos(chamber_rel_angle*i)*chamber_dist/m.tan(chamber_rel_angle/2)-chamber_dist*m.sin(chamber_rel_angle*i),
                        m.sin(chamber_rel_angle*i)*chamber_dist/m.tan(chamber_rel_angle/2)+chamber_dist*m.cos(chamber_rel_angle*i),
                        chamber_height]])
-            
-        # init_p1 = [[chamber_dist/m.tan(chamber_rel_angle/2), chamber_dist, 0],
-        #            [chamber_bot_radius, chamber_dist, 0],
-        #            [chamber_top_radius, chamber_dist, chamber_height],
-        #            [chamber_dist/m.tan(chamber_rel_angle/2), chamber_dist, chamber_height]]
-        # init_p2 = [[chamber_dist/m.tan(chamber_rel_angle/2+chamber_rel_angle), 0, 0],
-        #            [chamber_bot_radius, 6.242468, 0],
-        #            [chamber_top_radius, chamber_dist, chamber_height],
-        #            [chamber_dist/m.tan(chamber_rel_angle/2+chamber_rel_angle), chamber_dist, chamber_height]]
-        # init_p3 = [[0, 1.5, 0],
-        #            [0, chamber_bot_radius, 0],
-        #            [0, chamber_top_radius, chamber_height],
-        #            [0, 1.5, chamber_height]]
-        # gmsh.model.occ.addPoint(init_p[0], init_p[1], 0, 5, -1)
-        # gmsh.model.occ.addPoint(init_p[0], chamber_bot_radius, 0, 5, -1)
-        # gmsh.model.occ.addPoint(init_p[0], chamber_top_radius, chamber_height, 5, -1)
-        # gmsh.model.occ.addPoint(init_p[0], init_p[1], chamber_height, 5, -1)
 
-        # gmsh.model.occ.addLine(4, 5, tag=-1)
-        # gmsh.model.occ.addLine(5, 6, tag=-1)
-        # gmsh.model.occ.addLine(6, 7, tag=-1)
-        # gmsh.model.occ.addLine(7, 4, tag=-1)
+    elif no_chamber == 2:
+        init_p = [
+                    [[0, chamber_dist, 0],
+                    [m.sqrt(chamber_bot_radius**2 - chamber_dist**2), chamber_dist, 0],
+                    [m.sqrt(chamber_top_radius**2 - chamber_dist**2), chamber_dist,chamber_height],
+                    [0, chamber_dist, chamber_height]],
+                    [[0, -chamber_dist, 0],
+                    [-m.sqrt(chamber_bot_radius**2 - chamber_dist**2), -chamber_dist, 0],
+                    [-m.sqrt(chamber_top_radius**2 - chamber_dist**2), -chamber_dist,chamber_height],
+                    [0, -chamber_dist, chamber_height]]
+                ]
 
-        # gmsh.model.occ.synchronize()
+    else:
+        init_p = [[[0,0,0],[chamber_bot_radius, 0,0],[chamber_top_radius, 0,0],[0, 0,chamber_height]]]
+    
+    for i in range(no_chamber):
+        p1 = gmsh.model.occ.addPoint(init_p[i][0][0], init_p[i][0][1], init_p[i][0][2], 5, -1)
+        p2 = gmsh.model.occ.addPoint(init_p[i][1][0], init_p[i][1][1], init_p[i][1][2], 5, -1)
+        p3 = gmsh.model.occ.addPoint(init_p[i][2][0], init_p[i][2][1], init_p[i][2][2], 5, -1)
+        p4 = gmsh.model.occ.addPoint(init_p[i][3][0], init_p[i][3][1], init_p[i][3][2], 5, -1)
 
-        # a = gmsh.model.occ.addCurveLoop([7, 8, 9, 10], -1)
-        # chamber_plane = gmsh.model.occ.addPlaneSurface([a], tag=-1)
-        # chamber = gmsh.model.occ.revolve([(2, chamber_plane)], 0, 1.5, 0, 0, 0, 1, chamber_rel_angle)
-        # gmsh.model.occ.remove([(2, chamber_plane)], recursive=1)
+        l1 = gmsh.model.occ.addLine(p1, p2, tag=-1)
+        l2 = gmsh.model.occ.addLine(p2, p3, tag=-1)
+        l3 = gmsh.model.occ.addLine(p3, p4, tag=-1)
+        l4 = gmsh.model.occ.addLine(p4, p1, tag=-1)
+        gmsh.model.occ.synchronize()
 
-        # gmsh.model.occ.synchronize()
-        # # gmsh.model.occ.copy([(3, 1)])
-        # ### Cut body
-        # final_body = gmsh.model.occ.cut([(3,1)], [(3,2)], tag=-1,removeObject=1, removeTool=1)
-        # gmsh.model.occ.synchronize()
-        print(init_p)
+        curve = gmsh.model.occ.addCurveLoop([l1, l2, l3, l4], -1)
+        chamber_plane = gmsh.model.occ.addPlaneSurface([curve], tag=-1)
+        chamber = gmsh.model.occ.revolve([(2, chamber_plane)], 0, 1.5, 0, 0, 0, 1, chamber_rel_angle)
+        gmsh.model.occ.remove([(2, chamber_plane)], recursive=1)
+        
+        gmsh.model.occ.synchronize()
+        ### Cut body
+        # final_body = gmsh.model.occ.cut([(3,1)], [(3,-1)], tag=-1,removeObject=1, removeTool=1)
+        gmsh.model.occ.synchronize()
+        print(chamber)
 gmsh.initialize()
 gmsh.option.setNumber("General.Terminal", 0)
 
@@ -109,7 +111,7 @@ init_p = [0,0]
 
 # for i in range (no_chamber):
 
-chamber(3)
+chamber(no_chamber)
 
 ### Mesh creation
 # Parameters
