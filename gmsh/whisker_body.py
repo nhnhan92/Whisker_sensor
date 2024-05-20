@@ -32,9 +32,8 @@ gmsh.model.occ.mesh.setSize(gmsh.model.getEntities(0), lc)
 # gmsh.model.occ.mesh.setSize(box_markers_points, lc_marker)
 
 gmsh.model.occ.synchronize()
-gmsh.model.mesh.generate(3)
+# gmsh.model.mesh.generate(3)
 a = gmsh.model.mesh.getNodes(dim=1, tag=2, includeBoundary=0,returnParametricCoord=False)
-print(a[1])
 # print(a)
 
 # outer_surfaces = [2,3]
