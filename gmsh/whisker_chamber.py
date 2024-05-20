@@ -1,96 +1,45 @@
 import gmsh
 import math as m
 import os
-
-# from BoundingBox import Bounding
-gmsh.initialize()
+from whisker_mesh_manager import chamber_mesh
 
 # Element size for creating mechanical model
-lc = 1
-lc_marker = 3
-# # Element size for creating visual model
-# lc = 5
+mesh_size = 4
 
-
-# def skin_sotaro_real():
+gmsh.initialize()
 gmsh.option.setNumber("General.Terminal", 0)
 
-gmsh.model.add("Taclink")
-path = os.path.dirname(os.path.abspath(__file__))
-v1 = gmsh.model.occ.importShapes(os.path.join(path, 'length_100/chamber_single.STEP'))
-# v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_chamber_right.STEP'))
-# v1 = gmsh.model.occ.importShapes(os.path.join(path, 'whisker_chamber_left.STEP'))
+gmsh.model.add("whisker_chamber")
+gmsh.logger.start()
+def mesh_genarator(no_chamber = 2,
+                    chamber_bot_radius = 10,
+                    cone_angle = 85.5,
+                    chamber_height = 24,
+                    mesh_size = mesh_size):
+    ### Chambers
+    chamber_mesh.chamber(no_chamber = no_chamber,
+                        chamber_bot_radius = chamber_bot_radius,
+                        cone_angle = cone_angle,
+                        chamber_height = chamber_height,
+                        mesh_size = mesh_size)
 
-gmsh.model.occ.synchronize()
-xmin1, ymin1, zmin1, xmax1, ymax1, zmax1 = gmsh.model.getBoundingBox(
-    v1[0][0], v1[0][1])
+    ### Mesh creation
+    # Parameters
 
-box_markers_points = gmsh.model.getEntitiesInBoundingBox(xmin1 - 5, ymin1 - 5, -255, xmax1 + 5,
-                                                         ymax1 + 5, -5, 0)
+    gmsh.model.occ.mesh.setSize(gmsh.model.occ.getEntities(-1), mesh_size)
+    gmsh.model.occ.synchronize()
 
+    gmsh.model.mesh.generate(2)
 
-gmsh.model.mesh.setSize(gmsh.model.getEntities(0), lc)
-# gmsh.model.occ.mesh.setSize(box_markers_points, lc_marker)
+    ### Exporting files
+    gmsh.write("test_stl.stl")
 
-# gmsh.model.mesh.setOutwardOrientation(tag)
-gmsh.model.occ.synchronize()
-gmsh.model.mesh.generate(2)
-gmsh.fltk.run()
-gmsh.finalize()
+    gmsh.fltk.run()
+    gmsh.finalize()
 
-# outer_surfaces = [2,3]
-# outer_lines = [5,6,7,8,9,10]
-# idx_outer_surfaces = []
-# idx_outer_lines = []
-
-# for i in range(len(outer_surfaces)):
-#     idx_outer_surfaces.extend((gmsh.model.mesh.getNodes(dim=2, tag=outer_surfaces[i], includeBoundary=0,
-#                                                         returnParametricCoord=False))[0])
-
-# for i in range(len(outer_lines)):
-#     idx_outer_surfaces.extend((gmsh.model.mesh.getNodes(dim=1, tag=outer_lines[i], includeBoundary=0,
-#                                                         returnParametricCoord=False))[0])
-
-# skin_surfaces = [15, 128, 129, 242, 257, 258]
-# marker_surfaces= list(range(1,259))
-# for i in skin_surfaces:
-#     marker_surfaces.remove(i)
-
-# idx_skin_surfaces = []
-# idx_marker_surfaces = []
-# for i in skin_surfaces:
-#     idx_skin_surfaces.extend((gmsh.model.mesh.getNodes(dim=2, tag=i, includeBoundary=1,
-#                                                         returnParametricCoord=False))[0])
-
-# for i in marker_surfaces:
-#     idx_marker_surfaces.extend((gmsh.model.mesh.getNodes(dim=2, tag=i, includeBoundary=1,
-#                                                         returnParametricCoord=False))[0])
-
-# idx_skin_surfaces = [*set(idx_skin_surfaces)]
-# idx_marker_surfaces = [*set(idx_marker_surfaces)]
-
-
-# for i in range(len(idx_skin_surfaces)):
-#     idx_skin_surfaces[i] = int(idx_skin_surfaces[i] - 1)
-# print(len(idx_skin_surfaces))
-# print(idx_skin_surfaces)
-# for i in range(len(idx_marker_surfaces)):
-#     idx_marker_surfaces[i] = int(idx_marker_surfaces[i] - 1)
-# idx_marker_surfaces.sort()
-# print(len(idx_marker_surfaces))
-# print(idx_marker_surfaces)
-
-
-# for i in range(len(idx_outer_surfaces)):
-#     idx_outer_surfaces[i] = int(idx_outer_surfaces[i] - 1)
-#
-# print(gmsh.model.mesh.getElementsByType(2, tag=-1, task=0, numTasks=1))
-# print(gmsh.model.mesh.getNodes(dim=-1, tag=-1, includeBoundary=False, returnParametricCoord=0))
-# print(gmsh.model.mesh.getElementsByType(2, tag=-1, task=0, numTasks=1)[1])
-# print(len(gmsh.model.mesh.getElementsByType(2, tag=-1, task=0, numTasks=1)[0]))
-# print(len(gmsh.model.mesh.getElementsByType(2, tag=-1, task=0, numTasks=1)[1]))
-# print(len((gmsh.model.mesh.getElements(0,-1))[2]))
-# gmsh.option.setNumber("Geometry.SurfaceLabels", 1)
-
-
-#     return idx_insurface_skin, pos_insurface_skin
+if __name__ == '__main__':
+    mesh_genarator(no_chamber = 2,
+                    chamber_bot_radius = 10,
+                    cone_angle = 85.5,
+                    chamber_height = 24,
+                    mesh_size = 4)
