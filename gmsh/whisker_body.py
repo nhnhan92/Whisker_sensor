@@ -36,15 +36,8 @@ def mesh_genarator(body_bot_radius,
 
     gmsh.model.mesh.generate(3)
 
-<<<<<<< HEAD
-gmsh.model.occ.synchronize()
-# gmsh.model.mesh.generate(3)
-a = gmsh.model.mesh.getNodes(dim=1, tag=2, includeBoundary=0,returnParametricCoord=False)
-# print(a)
-=======
     ### Exporting files
     gmsh.write("test_vtk.vtk")
->>>>>>> adb6fbf66768692d85f93b79bb4951b06085dfdf
 
     gmsh.fltk.run()
     gmsh.finalize()

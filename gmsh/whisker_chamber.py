@@ -22,7 +22,8 @@ def mesh_genarator(no_chamber = 2,
                         cone_angle = cone_angle,
                         chamber_height = chamber_height,
                         mesh_size = mesh_size)
-
+    if no_chamber == 2:
+        gmsh.model.occ.remove([(3, 1)], recursive=1)
     ### Mesh creation
     # Parameters
 
@@ -38,8 +39,9 @@ def mesh_genarator(no_chamber = 2,
     gmsh.finalize()
 
 if __name__ == '__main__':
-    mesh_genarator(no_chamber = 2,
+    mesh_genarator(no_chamber = 3,
                     chamber_bot_radius = 10,
                     cone_angle = 85.5,
                     chamber_height = 24,
                     mesh_size = 4)
+    
