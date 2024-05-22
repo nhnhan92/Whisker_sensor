@@ -39,7 +39,7 @@ def mesh_genarator(no_chamber = 2,
     gmsh.finalize()
 
 if __name__ == '__main__':
-    mesh_genarator(no_chamber = 1,
+    mesh_genarator(no_chamber = 2,
                     chamber_bot_radius = 10,
                     cone_angle = 85.5,
                     chamber_height = 24,
